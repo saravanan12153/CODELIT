@@ -1,0 +1,33 @@
+<!-- Title Page -->
+<div class="row wrapper border-bottom white-bg page-heading">
+  <div class="col-lg-10">
+    <h2>Courses</h2>
+  </div>
+</div>
+<br>
+
+<!-- Sowing All Pages-->
+<div class="row">
+  <% @courses.each do |course| %>
+      <div class="col-md-3">
+        <%= link_to course_path(course) do %>
+        <div class="panel panel-primary" style="color: black">
+          <div class="panel-heading">
+            <%= course.title %>
+          </div>
+          <div class="panel-body">
+            <p><%= course.subtitle %></p>
+          </div>
+          <div class="panel-footer">
+            <%= course.price %>
+          </div>
+        </div>
+        <% end %>
+      </div>
+  <% end %>
+
+</div>
+
+<%= link_to 'New Course', new_course_path %>
+<br>
+<br>
