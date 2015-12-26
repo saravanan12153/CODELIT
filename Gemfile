@@ -11,12 +11,20 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'therubyracer', platforms: :ruby
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
+gem 'jquery-rails'
+
+# for user authentication
+gem 'devise'
 
 group :doc do
   gem 'sdoc', require: false
 end
 
 group :development do
+  gem 'byebug'
+  gem 'web-console', '~> 2.0'
+  gem 'spring'
+
   # for better error display
   gem "better_errors"
   gem "binding_of_caller"
