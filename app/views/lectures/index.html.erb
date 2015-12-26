@@ -1,0 +1,41 @@
+<!-- Page Title-->
+<div class="row wrapper border-bottom white-bg page-heading">
+  <div class="col-lg-10">
+    <h2>
+      <%= @course.title %>
+      <%= link_to new_course_lecture_path do %>
+        <button class="btn btn-danger btn-circle" type="button">
+          <i class="fa fa-plus"></i>
+        </button>
+      <% end %>
+    </h2>
+    <ol class="breadcrumb">
+      <li>
+        <a href="<%= courses_path %>">Courses</a>
+      </li>
+      <li class="active">
+        <strong><%= @course.title %></strong>
+      </li>
+    </ol>
+  </div>
+</div>
+<br>
+
+<div class="wrapper wrapper-content">
+<div class="row">
+  <div class="col-lg-12">
+    <div class="ibox float-e-margins">
+      <div class="ibox-content mailbox-content">
+        <div class="file-manager">
+          <h5 class="text-center">Lectures</h5>
+          <ul class="folder-list m-b-md" style="padding: 0">
+            <% @lectures.each do |lecture| %>
+              <li><a href="<%= course_lecture_path(@course,lecture) %>"> <i class="fa fa-play "></i> <%= lecture.seq %>. <%= lecture.title %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

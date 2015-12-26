@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  video: MyString
+  external: MyText
+  transcript: MyText
+  seq: 1
+  publish: false
+
+two:
+  title: MyString
+  video: MyString
+  external: MyText
+  transcript: MyText
+  seq: 1
+  publish: false

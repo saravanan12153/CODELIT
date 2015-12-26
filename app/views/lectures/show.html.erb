@@ -1,0 +1,104 @@
+<!-- Page Title-->
+<div class="row wrapper border-bottom white-bg page-heading">
+  <div class="col-lg-10">
+    <h2>
+      <%= @lecture.title %>
+      <%= link_to edit_course_lecture_path(@course,@lecture) do %>
+        <button class="btn btn-primary btn-circle" type="button">
+          <i class="fa fa-pencil-square-o"></i>
+        </button>
+      <% end %>
+    </h2>
+    <ol class="breadcrumb">
+      <li>
+        <a href="<%= courses_path %>">Courses</a>
+      </li>
+      <li>
+        <a href="<%= course_path(@course) %>"><%= @course.title %></a>
+      </li>
+      <li class="active">
+        <strong><%= @lecture.seq %>. <%= @lecture.title %></strong>
+      </li>
+    </ol>
+  </div>
+</div>
+<br>
+
+
+<div class="wrapper wrapper-content animated fadeInRight ecommerce">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="tabs-container">
+        <ul class="nav nav-tabs">
+          <li class="active"><a data-toggle="tab" href="#tab-1"> Video</a></li>
+          <li class=""><a data-toggle="tab" href="#tab-2"> Transcript</a></li>
+          <li class=""><a data-toggle="tab" href="#tab-3"> External Links</a></li>
+          <li class=""><a data-toggle="tab" href="#tab-4"> Discussions</a></li>
+        </ul>
+        <div class="tab-content">
+          <div id="tab-1" class="tab-pane active">
+            <div class="panel-body">
+
+              <figure class="embed-responsive embed-responsive-16by9">
+                <iframe width="420" height="315" src="https://www.youtube.com/embed/G1JanBd7kuM" frameborder="0" allowfullscreen></iframe>
+              </figure>
+
+            </div>
+          </div>
+          <div id="tab-3" class="tab-pane">
+            <div class="panel-body">
+
+              <p><%= @lecture.external %></p>
+
+            </div>
+          </div>
+          <div id="tab-2" class="tab-pane">
+            <div class="panel-body">
+
+              <p><%= @lecture.transcript %></p>
+
+            </div>
+          </div>
+          <div id="tab-4" class="tab-pane">
+            <div class="panel-body">
+
+              <p>
+
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nec tristique turpis. Maecenas justo orci, pellentesque eget tincidunt sit amet, tempor non massa. Donec eu auctor ipsum. Cras non est sit amet lectus condimentum elementum vel ut ligula. Praesent sagittis justo eu erat commodo, et consequat tellus commodo. Pellentesque eu quam volutpat, commodo orci ac, dapibus ligula. Mauris aliquet magna ac dui volutpat ultrices id a elit. Nullam sollicitudin rhoncus lectus, eget luctus nibh bibendum nec. Sed congue libero vitae erat sagittis, vitae tincidunt metus hendrerit.
+
+                Duis at tristique dolor, nec maximus urna. Quisque in lacus laoreet, vulputate augue sit amet, placerat leo. Nulla sagittis dui ullamcorper accumsan suscipit. Curabitur eu sem posuere, ultricies sem ut, iaculis turpis. Maecenas eu elit interdum, consequat ante ut, finibus augue. Ut lobortis nisl enim. Cras hendrerit ipsum a orci sagittis hendrerit. Aliquam elit enim, malesuada iaculis placerat quis, feugiat eu arcu. Nam venenatis pretium nisi, nec dictum tellus vestibulum in. Pellentesque quis congue felis. Nunc eget nibh diam. Sed nisi magna, fermentum a massa sit amet, placerat egestas nulla. Morbi pellentesque ex massa. Nam id turpis vel lacus sollicitudin eleifend eget et felis. Vestibulum auctor velit et massa sagittis sollicitudin.
+
+                Nullam at nisl lectus. Suspendisse vitae justo leo. Aenean efficitur quis ligula a vulputate. Mauris ligula ex, viverra quis est eu, bibendum congue justo. Morbi massa diam, egestas eget urna et, tristique vulputate velit. Donec faucibus elit sed massa auctor tincidunt. Curabitur nunc lorem, pharetra vel tincidunt sed, dignissim ac eros. Curabitur vel dictum nisl. Etiam ac faucibus sem. Donec tincidunt sodales augue non sagittis. Nunc consectetur nunc at leo ullamcorper, eu cursus leo tristique.
+
+                Sed ut lacus a ligula elementum congue. Morbi vel convallis risus. Nulla vehicula molestie nisl, et fringilla urna maximus commodo. Duis justo orci, scelerisque sit amet enim sit amet, laoreet tempus turpis. Praesent tincidunt mauris ac dui vestibulum sodales. Nullam vehicula dui sed sapien varius, in tincidunt erat placerat. Suspendisse enim lacus, dignissim ac porttitor sed, faucibus quis neque. Aenean dictum malesuada lorem et semper.
+
+                Aenean fermentum mauris at mauris posuere, eget finibus lacus accumsan. Mauris vehicula vulputate metus. Fusce iaculis vestibulum dolor sed facilisis. Phasellus interdum elit at elit volutpat, ac pulvinar ex aliquet. In in dui in purus elementum volutpat. Duis placerat porta viverra. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mattis ex sit amet odio egestas facilisis. Nulla pellentesque consectetur mi, a tempor augue ultrices in. Duis non libero velit. Fusce sit amet consequat dui. Nam iaculis gravida ornare. </p>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<br>
+<br>
+<% content_for :javascript do %>
+  <script type="text/javascript">
+
+    $(document).ready(function () {
+
+      // Adding responsive class to lecture video
+      $("iframe").addClass("embed-responsive-item");
+
+    });
+
+    // making lecture video full screen
+    $(document).on('webkitfullscreenchange mozfullscreenchange fullscreenchange', function (e) {
+      $('body').hasClass('fullscreen-video') ? $('body').removeClass('fullscreen-video') : $('body').addClass('fullscreen-video')
+    });
+
+
+  </script>
+<% end %>
