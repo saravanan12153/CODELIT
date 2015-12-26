@@ -28,4 +28,7 @@ group :development do
   # for better error display
   gem "better_errors"
   gem "binding_of_caller"
+
+  # for email in development
+  gem "letter_opener"
 end
