@@ -67,7 +67,7 @@
       </div>
       <div class="ibox-footer">
                             <div class="pull-right">
-                                Updated - <i class="fa fa-clock-o"></i> <%= @course.updated_at %>
+                                <i class="fa fa-clock-o"></i> Updated <%= time_ago_in_words(@course.updated_at) %> ago.
                             </div>
         <p></p>
       </div>
