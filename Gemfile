@@ -31,6 +31,12 @@ gem 'dotenv-rails'
 # for auto-complete search
 gem 'jquery-ui-rails'
 
+# for attachments
+gem 'paperclip', '~> 4.3'
+
+# for AWS services
+gem 'fog'
+
 group :doc do
   gem 'sdoc', require: false
 end

@@ -12,6 +12,6 @@ ActiveAdmin.register User do
 #   permitted << :other if resource.something?
 #   permitted
 # end
-
+  permit_params :list, :of, :attributes, :on, :model, :name, :admin
 
 end

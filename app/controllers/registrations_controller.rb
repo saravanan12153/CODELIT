@@ -35,7 +35,7 @@ class RegistrationsController < Devise::RegistrationsController
 
   # Devise parameter allowed for controller during update account
   def account_update_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :avatar)
   end
 
 

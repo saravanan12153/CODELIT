@@ -35,6 +35,14 @@
                 <%= f.password_field :password_confirmation, placeholder: "Confirm New Password", class: "form-control" %>
               </div>
             </div>
+            <div class="hr-line-dashed"></div>
+            <div class="form-group">
+              <%= f.label :avatar, "Avatar", class: "col-sm-2 control-label" %>
+              <div class="col-sm-10">
+                <%= f.file_field :avatar, id: "imgInp", style: "display: none;" %>
+                <img id="blah" src="<%= current_user.avatar.url(:medium) %>" alt="<%= current_user.name %>" style="height:100px;width:100px;"/>
+              </div>
+            </div>
 
             <%= link_to "Cancel", :back, class: "btn btn-default" %> <%= f.submit "Update Account", class: "btn btn-primary" %>
           <% end %>
@@ -45,23 +53,23 @@
 </div>
 <% content_for :javascript do %>
   <script type="text/javascript">
-//    function readURL(input) {
-//      if (input.files && input.files[0]) {
-//        var reader = new FileReader();
-//
-//        reader.onload = function (e) {
-//          $('#blah').attr('src', e.target.result);
-//        };
-//
-//        reader.readAsDataURL(input.files[0]);
-//      }
-//    }
-//
-//    $("#imgInp").change(function () {
-//      readURL(this);
-//    });
-//    $('#blah').on('click', function () {
-//      $('#imgInp').trigger('click');
-//    });
+    function readURL(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+          $('#blah').attr('src', e.target.result);
+        };
+
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+
+    $("#imgInp").change(function () {
+      readURL(this);
+    });
+    $('#blah').on('click', function () {
+      $('#imgInp').trigger('click');
+    });
   </script>
 <% end %>
