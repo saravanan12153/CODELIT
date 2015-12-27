@@ -1,0 +1,48 @@
+<%= form_tag course_enrols_path(@course) do %>
+  <% if params[:coupon].present? && @coupon.present? && @coupon.total > 0 %>
+    <input type="text" hidden="" name="coupon" value=<%= params[:coupon] %>>
+  <% end %>
+  <p>Please enter your payment details:
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal6">
+      Enter Discount Coupon
+    </button>
+    <!-- Show BrainTree badge-->
+      <span class="pull-right text-muted">
+        <a href="https://www.braintreegateway.com/merchants/<%= ENV['BRAINTREE_MERCHANT_ID'] %>/verified" target="_blank">
+          <img src="https://s3.amazonaws.com/braintree-badges/braintree-badge-wide-dark.png" width="280px" height="44px" border="0" class="img-responsive"/>
+        </a>
+      </span>
+  </p>
+  <!-- BrainTree Display here-->
+  <div id="dropin"></div>
+  <% if params[:coupon].present? && @coupon.present? && @coupon.total > 0 %>
+    <%= button_tag "Pay <del>&euro;#{@course.price}</del> &euro;#{ @course.price-@course.price*@coupon.percent/100 }".html_safe, class: 'btn btn-success btn-lg btn-block' %>
+  <% else %>
+    <%= button_tag "Pay &euro;#{@course.price}".html_safe, class: 'btn btn-success btn-lg btn-block' %>
+  <% end %>
+<% end %>
+
+
+
+
+<div class="modal inmodal fade" id="myModal6" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Enter Coupon:</h4>
+      </div>
+      <form action="" method="get">
+        <div class="modal-body">
+          <div class="form-group">
+            <input type="text" name="coupon" placeholder="Enter Coupon here" class="form-control" autofocus="">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+          <input type="submit" value="Submit" class="btn btn-primary">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

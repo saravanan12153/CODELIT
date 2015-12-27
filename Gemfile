@@ -40,6 +40,9 @@ gem 'fog'
 # for embeding videos
 gem 'embedly'
 
+# for payments
+gem 'braintree', '~> 2.56'
+
 group :doc do
   gem 'sdoc', require: false
 end

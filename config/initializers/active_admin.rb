@@ -5,6 +5,13 @@ ActiveAdmin.setup do |config|
   # for each of the active admin pages.
   #
   config.site_title = "Myapp"
+  config.clear_javascripts!
+  config.register_javascript 'admin/active_admin.js'
+
+  current_javascripts = config.javascripts.clone
+  config.clear_javascripts!
+  config.register_javascript 'application.js'
+  current_javascripts.each{ |j| config.register_javascript j }
 
   # Set the link url for the title. For example, to take
   # users to your main site. Defaults to no link.

@@ -23,8 +23,9 @@
         <div class="ibox-content">
           <div class="tabs-container">
             <ul class="nav nav-tabs">
-              <li class="active"><a data-toggle="tab" href="#tab-1">Promo</a></li>
-              <li class=""><a data-toggle="tab" href="#tab-2">Description</a></li>
+              <li class="active"><a id="t1" data-toggle="tab" href="#tab-1">Promo</a></li>
+              <li class=""><a id="t2" data-toggle="tab" href="#tab-2">Description</a></li>
+              <li class=""><a id="t3" data-toggle="tab" href="#tab-3">Get Course</a></li>
             </ul>
             <div class="tab-content">
               <div id="tab-1" class="tab-pane active">
@@ -39,28 +40,66 @@
                   <%= @course.description %>
                 </div>
               </div>
+              <div id="tab-3" class="tab-pane">
+                <div class="panel-body">
+                  <% if user_signed_in? %>
+                    <%= render 'coupon' %>
+                  <% else %>
+                    <div class="text-center">
+                      <%= link_to "Log In/Sign Up To Continue", new_user_session_path, class: "btn btn-primary" %>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="ibox-footer">
-                        <span class="pull-right">
-                          The righ side of the footer
-                    </span>
-          This is simple footer example
         </div>
       </div>
     </div>
   </div>
 </div>
+<br>
+<br>
 
 
 <% content_for :javascript do %>
+  <script src="https://js.braintreegateway.com/v2/braintree.js"></script>
   <script type="text/javascript">
 
+    var clientToken = "<%= Braintree::ClientToken.generate %>";
+    braintree.setup(clientToken, "dropin", {
+      container: "dropin",
+      paypal: {
+        singleUse: true,
+        currency: 'EUR',
+        locale: 'en_us'
+      },
+      dataCollector: {
+        paypal: true  // Enables fraud prevention
+      }
+    });
     $(document).ready(function () {
+
 
       // Adding responsive class to lecture video
       $("iframe").addClass("embed-responsive-item");
+      <% if params[:coupon].present? %>
+        jQuery('#tab-3').addClass('active');
+        jQuery('#tab-2').removeClass('active');
+        jQuery('#tab-1').removeClass('active');
+        jQuery('#t3').parent('li').addClass('active');
+        jQuery('#t2').parent('li').removeClass('active');
+        jQuery('#t1').parent('li').removeClass('active');
+        <% if user_signed_in? %>
+          <% if @coupon.present? && @coupon.total > 0 %>
+            toastr['success']('Coupon added successfully');
+          <% else %>
+            toastr['error']('Invalid or Expired Coupon!');
+          <% end %>
+        <% else %>
+          toastr['error']('Please Log In to continue!');
+        <% end %>
+      <% end %>
 
     });
 
