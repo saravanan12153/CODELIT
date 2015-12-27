@@ -11,9 +11,12 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery/jquery-2.1.1.js
+//= require jquery.turbolinks
 //= require jquery_ujs
+//= require jquery-ui
 //= require bootstrap-sprockets
 //= require metisMenu/jquery.metisMenu.js
 //= require pace/pace.min.js
 //= require slimscroll/jquery.slimscroll.min.js
+//= require turbolinks
 //= require_tree .

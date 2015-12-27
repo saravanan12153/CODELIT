@@ -13,6 +13,9 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'jquery-rails'
 
+# for turbolinks
+gem 'jquery-turbolinks'
+
 # for user authentication
 gem 'devise'
 
@@ -21,6 +24,12 @@ gem 'puma'
 
 # for admin section
 gem 'activeadmin', github: 'activeadmin'
+
+# for dotenv
+gem 'dotenv-rails'
+
+# for auto-complete search
+gem 'jquery-ui-rails'
 
 group :doc do
   gem 'sdoc', require: false
