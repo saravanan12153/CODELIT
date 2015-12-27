@@ -37,6 +37,9 @@ gem 'paperclip', '~> 4.3'
 # for AWS services
 gem 'fog'
 
+# for embeding videos
+gem 'embedly'
+
 group :doc do
   gem 'sdoc', require: false
 end
