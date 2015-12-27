@@ -16,6 +16,12 @@ gem 'jquery-rails'
 # for user authentication
 gem 'devise'
 
+# puma webserver
+gem 'puma'
+
+# for admin section
+gem 'activeadmin', github: 'activeadmin'
+
 group :doc do
   gem 'sdoc', require: false
 end
