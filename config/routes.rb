@@ -4,8 +4,8 @@ Myapp::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   devise_for :users, controllers: {registrations: 'registrations'}
-  resources :courses do
-    resources :lectures
+  resources :courses, only: [:index, :show] do
+    resources :lectures, only: [:index, :show]
     resources :enrols, only: [:create]
   end
   # The priority is based upon order of creation: first created -> highest priority.
