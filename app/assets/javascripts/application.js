@@ -18,6 +18,7 @@
 //= require bootstrap-sprockets
 //= require metisMenu/jquery.metisMenu.js
 //= require pace/pace.min.js
+//= require highlight.pack
 //= require slimscroll/jquery.slimscroll.min.js
 //= require_tree .
 
@@ -38,3 +39,9 @@ toastr.options = {
   "showMethod": "fadeIn",
   "hideMethod": "fadeOut"
 };
+
+$(document).ready(function () {
+  $('pre code').each(function (i, block) {
+    hljs.highlightBlock(block);
+  });
+});
