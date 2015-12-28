@@ -5,12 +5,14 @@ class LecturesController < ApplicationController
   # GET /lectures
   # GET /lectures.json
   def index
+    authorize @course
     @lectures = @course.lectures.all
   end
 
   # GET /lectures/1
   # GET /lectures/1.json
   def show
+    authorize @lecture
   end
 
 

@@ -43,6 +43,9 @@ gem 'embedly'
 # for payments
 gem 'braintree', '~> 2.56'
 
+# for authorizations
+gem 'pundit'
+
 group :doc do
   gem 'sdoc', require: false
 end
