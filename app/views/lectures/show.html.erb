@@ -20,17 +20,35 @@
 <br>
 
 
+<div class="row">
+  <div class="col-sm-8 col-sm-offset-2">
+    <% if @lecture.next %>
+      <%= link_to "Next <i class='fa fa-arrow-circle-right'></i>".html_safe, course_lecture_path(@course, @lecture.next), class: "btn btn-primary pull-right" %>
+    <% end %>
+    <% if @lecture.previous %>
+      <%= link_to "<i class='fa fa-arrow-circle-left'></i> Previous".html_safe, course_lecture_path(@course, @lecture.previous), class: "btn btn-primary pull-left" %>
+    <% end %>
+  </div>
+</div>
+
 <div class="wrapper wrapper-content animated fadeInRight ecommerce">
   <div class="row">
     <div class="col-lg-12">
       <div class="tabs-container">
         <ul class="nav nav-tabs">
-          <li class="active"><a data-toggle="tab" href="#tab-1"> Video</a></li>
-          <li class=""><a data-toggle="tab" href="#tab-2"> Transcript</a></li>
-          <li class=""><a data-toggle="tab" href="#tab-3"> External Links</a></li>
-          <li class=""><a data-toggle="tab" href="#tab-4"> Discussion</a></li>
+          <% unless @lecture.video.empty? %>
+          <li class="active"><a id="t1" data-toggle="tab" href="#tab-1"> Video</a></li>
+          <% end %>
+          <% unless @lecture.transcript.empty? %>
+          <li class=""><a id="t2" data-toggle="tab" href="#tab-2"> Transcript</a></li>
+          <% end %>
+          <% unless @lecture.external.empty? %>
+          <li class=""><a id="t3" data-toggle="tab" href="#tab-3"> External Links</a></li>
+          <% end %>
+          <li class=""><a id="t4" data-toggle="tab" href="#tab-4"> Discussion</a></li>
         </ul>
         <div class="tab-content">
+          <% unless @lecture.video.empty? %>
           <div id="tab-1" class="tab-pane active">
             <div class="panel-body">
 
@@ -40,6 +58,8 @@
 
             </div>
           </div>
+          <% end %>
+          <% unless @lecture.external.empty? %>
           <div id="tab-3" class="tab-pane">
             <div class="panel-body">
 
@@ -47,6 +67,8 @@
 
             </div>
           </div>
+          <% end %>
+          <% unless @lecture.transcript.empty? %>
           <div id="tab-2" class="tab-pane">
             <div class="panel-body">
 
@@ -54,6 +76,7 @@
 
             </div>
           </div>
+          <% end %>
           <div id="tab-4" class="tab-pane">
             <div class="panel-body">
               <div id="disqus_thread"></div>
@@ -93,8 +116,16 @@
     $(document).ready(function () {
       // Adding responsive class to lecture video
       $("iframe").addClass("embed-responsive-item");
-      $('.count').value($('.comment-count').value);
+      <% if @lecture.video.empty? && !@lecture.transcript.empty? %>
+      jQuery('#tab-2').addClass('active');
+      jQuery('#tab-3').removeClass('active');
+      jQuery('#tab-1').removeClass('active');
+      jQuery('#t2').parent('li').addClass('active');
+      jQuery('#t3').parent('li').removeClass('active');
+      jQuery('#t1').parent('li').removeClass('active');
+      <% end %>
     });
+
 
     // making lecture video full screen
     $(document).on('webkitfullscreenchange mozfullscreenchange fullscreenchange', function (e) {

@@ -21,6 +21,5 @@ ActiveAdmin.register Course do
     column :publish
     actions
   end
-
-
+  permit_params :list, :of, :attributes, :on, :model, :title, :subtitle, :promo, :description, :external, :publish
 end

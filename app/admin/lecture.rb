@@ -21,7 +21,7 @@ ActiveAdmin.register Lecture do
     column :course
     actions
   end
-  permit_params :list, :of, :attributes, :on, :model, :title, :subtitle, :video, :transcript, :external, :seq, :publish
+  permit_params :list, :of, :attributes, :on, :model, :title, :video, :transcript, :external, :seq, :publish, :course_id
 
 
 end

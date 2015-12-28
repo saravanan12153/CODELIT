@@ -23,11 +23,14 @@
         <div class="ibox-content">
           <div class="tabs-container">
             <ul class="nav nav-tabs">
+              <% unless @course.promo.empty? %>
               <li class="active"><a id="t1" data-toggle="tab" href="#tab-1">Promo</a></li>
+              <% end %>
               <li class=""><a id="t2" data-toggle="tab" href="#tab-2">Description</a></li>
               <li class=""><a id="t3" data-toggle="tab" href="#tab-3">Get Course</a></li>
             </ul>
             <div class="tab-content">
+              <% unless @course.promo.empty? %>
               <div id="tab-1" class="tab-pane active">
                 <div class="panel-body">
                   <figure class="embed-responsive embed-responsive-16by9">
@@ -35,6 +38,7 @@
                   </figure>
                 </div>
               </div>
+              <% end %>
               <div id="tab-2" class="tab-pane">
                 <div class="panel-body">
                   <%= @course.description %>
@@ -83,6 +87,14 @@
 
       // Adding responsive class to lecture video
       $("iframe").addClass("embed-responsive-item");
+      <% if @course.promo.empty? %>
+      jQuery('#tab-2').addClass('active');
+      jQuery('#tab-3').removeClass('active');
+      jQuery('#tab-1').removeClass('active');
+      jQuery('#t2').parent('li').addClass('active');
+      jQuery('#t3').parent('li').removeClass('active');
+      jQuery('#t1').parent('li').removeClass('active');
+      <% end %>
       <% if params[:coupon].present? %>
         jQuery('#tab-3').addClass('active');
         jQuery('#tab-2').removeClass('active');
