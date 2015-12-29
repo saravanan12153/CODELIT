@@ -1,7 +1,7 @@
 Myapp::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  devise_for :users, controllers: {registrations: 'registrations'}
+  devise_for :users, controllers: {registrations: 'registrations', omniauth_callbacks: "omniauth_callbacks"}
   resources :courses, only: [:index, :show] do
     resources :lectures, only: [:index, :show]
     resources :enrols, only: [:create]

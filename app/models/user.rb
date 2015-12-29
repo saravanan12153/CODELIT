@@ -3,7 +3,8 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable,
+         :omniauthable, password_length: 8..128, :omniauth_providers => [:google_oauth2, :facebook]
   has_attached_file :avatar, styles: {medium: "300x300#"}, default_url: ENV["USER_PLACEHOLDER"]
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
@@ -14,6 +15,7 @@ class User < ActiveRecord::Base
 
   if Rails.env.production?
     after_create :new_user_email, :subscribe
+    after_update :subscribe
   end
 
   # Sending the welcome email when user logs in.
@@ -41,4 +43,51 @@ class User < ActiveRecord::Base
   def enrolled_courses()
     self.enrols.where(user_id: self.id).all
   end
+
+  def self.find_for_google_oauth2(access_token)
+    data = access_token.info
+    user = User.where(:email => data["email"]).first
+
+    if user
+      return user
+    else
+      registered_user = User.where(:email => access_token.email).first
+      if registered_user
+        return registered_user
+      else
+        user = User.create(
+          name: data["name"],
+          provider: access_token.provider,
+          email: data["email"],
+          uid: access_token.uid,
+          image: data["image"],
+          password: Devise.friendly_token[0, 20]
+        )
+      end
+    end
+  end
+
+  def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
+    data = access_token.info
+    user = User.where(:provider => access_token.provider, :uid => access_token.uid).first
+
+    if user
+      return user
+    else
+      registered_user = User.where(:email => data.email).first
+      if registered_user
+        return registered_user
+      else
+        user = User.create(
+          name: access_token.extra.raw_info.name,
+          provider: access_token.provider,
+          email: data.email,
+          uid: access_token.uid,
+          image: data.image,
+          password: Devise.friendly_token[0, 20]
+        )
+      end
+    end
+  end
+
 end

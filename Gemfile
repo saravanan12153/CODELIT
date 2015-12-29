@@ -52,6 +52,15 @@ gem 'friendly_id', '~> 5.1.0'
 # for mailchimp subscriptions
 gem 'gibbon', '~> 2.2.0'
 
+# for social networks login
+gem 'omniauth'
+
+# for google+ integration
+gem 'omniauth-google-oauth2'
+
+# for fb integration
+gem 'omniauth-facebook'
+
 group :doc do
   gem 'sdoc', require: false
 end

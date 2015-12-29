@@ -9,6 +9,17 @@
 
     <p>Create account to get started.</p>
 
+    <p>
+      <a class="btn btn-success btn-facebook" href="<%= user_omniauth_authorize_path(:facebook) %>">
+        <i class="fa fa-facebook"> </i> Register with Facebook
+      </a>
+    </p>
+
+    <p>
+      <a class="btn btn-danger btn-facebook" href="<%= user_omniauth_authorize_path(:google_oauth2) %>">
+        <i class="fa fa-google"> </i> Register with Google +
+      </a>
+    </p>
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: "m-t"}) do |f| %>
       <%= render 'shared/deviseToasts' %>
