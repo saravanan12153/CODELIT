@@ -17,6 +17,7 @@ class LecturesController < ApplicationController
     progress = current_user.progesses.find_or_initialize_by(lecture: @lecture)
     progress.status = 'doing'
     progress.save
+    @course.completed?(current_user)
   end
 
 

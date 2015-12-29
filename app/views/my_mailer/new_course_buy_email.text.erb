@@ -1,0 +1,19 @@
+Thanks for using CODElit.
+
+
+<%= @enrol.user.name %>
+Reference# <%= @enrol.guid %>
+<%= @enrol.created_at.to_date %>
+
+
+<%= @enrol.course.title %>   &euro; <%= @enrol.price %>
+Total:                       &euro; <%= @enrol.price %>
+
+You can now access <%= @enrol.course.title %> through link:
+<a href="<%= course_url(@enrol.course) %>" target="_blank"><%= course_url(@enrol.course) %></a> or logging in on CODElit.
+
+
+
+CODElit | Via Leonardo Cucito 6/11, Genoa, Italy 16145
+
+codelit@hotmail.com

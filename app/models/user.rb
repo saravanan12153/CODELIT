@@ -11,6 +11,13 @@ class User < ActiveRecord::Base
   has_many :progesses, dependent: :destroy
   has_many :lectures, through: :progesses
 
+  after_create :new_user_email
+
+  # Sending the welcome email when user logs in.
+  def new_user_email
+    MyMailer.send_new_user_email(self).deliver_now
+  end
+
   # Enrolling the course after payment or in case of free course
   def enroll_course(course, price)
     self.enrols.create(course: course, price: price)

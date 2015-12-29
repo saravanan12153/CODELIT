@@ -8,6 +8,12 @@ class ApplicationController < ActionController::Base
   # rescue from pundit by going the function
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
+  ActiveAdmin::ResourceController.class_eval do
+    def find_resource
+      resource_class.is_a?(FriendlyId) ? scoped_collection.where(slug: params[:id]).first! : scoped_collection.where(id: params[:id]).first!
+    end
+  end
+
   private
 
   # alert user for unauthorized usage
