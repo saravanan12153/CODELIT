@@ -33,7 +33,7 @@ class CoursesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_course
-      @course = Course.find(params[:id])
+      @course = Course.friendly.find(params[:id])
       if params[:coupon].present?
         @coupon = Coupon.where(name: params[:coupon], course_id: @course.id).first
       end

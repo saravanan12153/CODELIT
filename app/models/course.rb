@@ -1,8 +1,10 @@
 class Course < ActiveRecord::Base
+  extend FriendlyId
   has_many :lectures, dependent: :destroy
   has_many :coupons, dependent: :destroy
   has_many :enrols, dependent: :destroy
   has_many :users, through: :enrols
+  friendly_id :title, use: :slugged
 
   has_attached_file :image, styles: {medium: "500x500#"}, default_url: ENV["COURSE_PLACEHOLDER"]
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/

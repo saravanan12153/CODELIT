@@ -46,6 +46,9 @@ gem 'braintree', '~> 2.56'
 # for authorizations
 gem 'pundit'
 
+# for friendly ids
+gem 'friendly_id', '~> 5.1.0'
+
 group :doc do
   gem 'sdoc', require: false
 end
