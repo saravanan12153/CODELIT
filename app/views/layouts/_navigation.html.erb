@@ -26,7 +26,7 @@
               <li class="<%= is_active_controller('lectures') %>">
                 <a href=""><i class="fa fa-th-large"></i> <span class="nav-label" data-i18n="nav.dashboard"><%= @course.title %></span> <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse <%= is_active_controller('lectures') %>">
-                  <% @course.lectures.each do |lecture| %>
+                  <% @course.lectures.order("seq ASC").each do |lecture| %>
                     <li class="<%= 'active' if current_page?(course_lecture_path(@course, lecture)) %>">
                       <%= link_to course_lecture_path(@course, lecture) do %>
                         <%= lecture.seq %>. <%= lecture.title %>

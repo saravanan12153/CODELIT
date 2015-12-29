@@ -38,7 +38,7 @@ class EnrolsController < ApplicationController
 
   private
   def set_course
-    @course = Course.friendly.find(params[:course_id])
+    @course = Course.where(publish: true).friendly.find(params[:course_id])
     if params[:coupon].present?
       @coupon = Coupon.where(name: params[:coupon], course_id: @course.id).first
     end

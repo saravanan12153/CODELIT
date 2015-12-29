@@ -14,7 +14,9 @@ class Enrol < ActiveRecord::Base
   #   MyMailer.new_course_buy_mail(self).deliver_now
   # end
 
-  after_create :send_mail_receipt
+  if Rails.env.production?
+    after_create :send_mail_receipt
+  end
 
   def send_mail_receipt
     MyMailer.new_course_buy_email(self).deliver_now

@@ -49,6 +49,9 @@ gem 'pundit'
 # for friendly ids
 gem 'friendly_id', '~> 5.1.0'
 
+# for mailchimp subscriptions
+gem 'gibbon', '~> 2.2.0'
+
 group :doc do
   gem 'sdoc', require: false
 end

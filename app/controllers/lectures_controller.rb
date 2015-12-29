@@ -6,7 +6,7 @@ class LecturesController < ApplicationController
   # GET /lectures.json
   def index
     authorize @course
-    @lectures = @course.lectures.all
+    @lectures = @course.lectures.where(publish: true).order("seq ASC").all
   end
 
   # GET /lectures/1
@@ -17,17 +17,19 @@ class LecturesController < ApplicationController
     progress = current_user.progesses.find_or_initialize_by(lecture: @lecture)
     progress.status = 'doing'
     progress.save
-    @course.completed?(current_user)
+    if Rails.env.production?
+      @course.completed?(current_user)
+    end
   end
 
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_course
-      @course = Course.friendly.find(params[:course_id])
+      @course = Course.where(publish: true).friendly.find(params[:course_id])
     end
 
     def set_lecture
-      @lecture = @course.lectures.friendly.find(params[:id])
+      @lecture = @course.lectures.where(publish: true).friendly.find(params[:id])
     end
 end
