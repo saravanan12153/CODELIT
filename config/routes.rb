@@ -1,6 +1,4 @@
 Myapp::Application.routes.draw do
-  get 'enrols/create'
-
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   devise_for :users, controllers: {registrations: 'registrations'}

@@ -21,5 +21,18 @@ ActiveAdmin.register Course do
     column :publish
     actions
   end
-  permit_params :list, :of, :attributes, :on, :model, :title, :subtitle, :promo, :description, :external, :publish
+  form html: { multipart: true }  do |f|
+    f.inputs  do
+      f.input :title
+      f.input :subtitle
+      f.input :promo
+      f.input :description
+      f.input :publish
+      f.inputs "Attachment", :multipart => true do
+        f.input :image, :as => :file
+      end
+    end
+    f.actions
+  end
+  permit_params :list, :of, :attributes, :on, :model, :title, :subtitle, :promo, :description, :publish, :image
 end

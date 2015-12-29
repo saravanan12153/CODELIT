@@ -19,9 +19,14 @@
           </div>
           <div class="panel-body">
             <p><%= course.subtitle %></p>
+            <%= image_tag course.image.url(:medium), alt: course.title, class: "img-thumbnail" %>
           </div>
           <div class="panel-footer">
-            &euro;<%= course.price %>
+            <% if user_signed_in? && !course.enrolled(current_user) %>
+              <span class="badge badge-primary">Enrolled</span>
+            <% else %>
+            <span class="label label-danger">&euro;<%= course.price %></span>
+            <% end %>
           </div>
         </div>
         <% end %>
