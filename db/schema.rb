@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151229050022) do
+ActiveRecord::Schema.define(version: 20151229075401) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -109,6 +109,14 @@ ActiveRecord::Schema.define(version: 20151229050022) do
   end
 
   add_index "lectures", ["slug"], name: "index_lectures_on_slug", unique: true
+
+  create_table "progesses", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "lecture_id"
+    t.string   "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

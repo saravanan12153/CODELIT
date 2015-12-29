@@ -13,4 +13,14 @@ class Course < ActiveRecord::Base
   def enrolled(user)
     self.enrols.where(user_id: [user.id], course_id: [self.id]).empty?
   end
+
+  def progress?(user)
+    total = 0
+    self.lectures.each do |lec|
+      if lec.doing?(user) || lec.done?(user)
+        total = total + 1.0
+      end
+    end
+    (total / self.lectures.all.count * 100).to_i
+  end
 end

@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
 
   has_many :enrols, dependent: :destroy
   has_many :courses, through: :enrols
+  has_many :progesses, dependent: :destroy
+  has_many :lectures, through: :progesses
 
   # Enrolling the course after payment or in case of free course
   def enroll_course(course, price)

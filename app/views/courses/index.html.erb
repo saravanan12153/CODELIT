@@ -20,6 +20,13 @@
           <div class="panel-body">
             <p><%= course.subtitle %></p>
             <%= image_tag course.image.url(:medium), alt: course.title, class: "img-thumbnail" %>
+            <% if user_signed_in? && course.lectures.count > 0 && !course.enrolled(current_user) %>
+              Progress
+              <div class="progress progress-striped active">
+                <div style="width: <%= course.progress?(current_user) %>%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="50" role="progressbar" class="progress-bar progress-bar-primary">
+                </div>
+              </div>
+              <% end %>
           </div>
           <div class="panel-footer">
             <% if user_signed_in? && !course.enrolled(current_user) %>
