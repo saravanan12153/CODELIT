@@ -2,7 +2,7 @@
 
   <div class="ibox-title">
     <% if commentable.comments.any? %>
-      <small class="pull-right text-muted">Last message:  <%= commentable.comments.last.created_at %></small>
+      <small class="pull-right text-muted">Last message:  <%= commentable.comments.last.created_at.localtime.strftime("%d-%m-%y %H:%M:%S") %></small>
     <% end %>
     Discussions
   </div>
