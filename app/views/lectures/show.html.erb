@@ -51,7 +51,7 @@
           <% unless @lecture.external.empty? %>
           <li class=""><a id="t3" data-toggle="tab" href="#tab-3"> External Links</a></li>
           <% end %>
-          <li class=""><a id="t4" data-toggle="tab" href="#tab-4"> Discussion</a></li>
+          <li class=""><a id="t4" data-toggle="tab" href="#tab-4"> Discussion (<%= @lecture.comments.count %>)</a></li>
         </ul>
         <div class="tab-content">
           <% unless @lecture.video.empty? %>

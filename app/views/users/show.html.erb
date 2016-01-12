@@ -1,0 +1,52 @@
+<div class="wrapper wrapper-content animated fadeInRight">
+
+
+  <div class="row m-b-lg m-t-lg">
+    <div class="col-md-12">
+
+      <div class="profile-image">
+        <%= image_tag @user.avatar.url(:medium), alt: @user.name, class: "img-circle circle-border m-b-md", style: "width: 100px; height: 100px" %>
+        <% if @user == current_user %>
+          <%= link_to '<i class="fa fa-pencil-square-o"></i> Edit Profile'.html_safe, edit_user_registration_path, class: "btn btn-primary" %>
+        <% end %>
+      </div>
+      <div class="profile-info">
+        <div class="">
+          <div>
+            <h2 class="no-margins">
+              <%= @user.name %>
+            </h2>
+            <p>
+              <%= link_to '<i class="fa fa-envelope-o"></i>'.html_safe, "mailto:#{@user.email}", target: '_blank' %>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <h2 class="text-center white-bg">COURSES ENROLLED</h2>
+  <div class="row">
+    <% @enrols.each do |enrol| %>
+
+        <div class="col-md-4">
+          <div class="ibox float-e-margins">
+            <!-- Course Title -->
+            <div class="ibox-title">
+              <h5><%= enrol.course.title %></h5>
+            </div>
+            <div class="ibox-content">
+              <!-- Course Image -->
+              <%= link_to course_path(enrol.course) do %>
+                  <%= image_tag enrol.course.image.url(:medium), alt: enrol.course.title, class: "img-thumbnail" %>
+              <% end %>
+              <!-- Course Subtitle -->
+              <p style="min-height: 50px; max-height: 50px; overflow: scroll">
+                <%= enrol.course.subtitle %>
+              </p>
+            </div>
+          </div>
+        </div>
+
+    <% end %>
+  </div>
+</div>

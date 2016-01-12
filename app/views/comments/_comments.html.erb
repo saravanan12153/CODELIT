@@ -17,8 +17,12 @@
             <div class="chat-message <%='left' if x%2==0 %><%='right' if x%2!=0 %>">
               <img class="message-avatar" src="<%= comment.user.avatar(:medium) %>" alt="">
               <div class="message">
-                <a class="message-author" href="#"> <%= comment.user.name %> </a>
-                <span class="message-date"><i class="fa fa-clock-o"></i> <%= time_ago_in_words(comment.created_at) %> ago</span>
+                <a class="message-author" href="<%= user_path(comment.user) %>"> <%= comment.user.name %> </a>
+                <span class="message-date">
+                <% if comment.user == current_user %>
+                  <%= link_to '<i class="fa fa-trash"></i>'.html_safe, course_lecture_comment_path(@course,commentable,comment), method: :delete %>
+                <% end %>
+                <i class="fa fa-clock-o"></i> <%= time_ago_in_words(comment.created_at) %> ago</span>
                     <span class="message-content">
                         <%= raw comment.content_html %>
                     </span>
