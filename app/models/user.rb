@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
   has_many :courses, through: :enrols
   has_many :progesses, dependent: :destroy
   has_many :lectures, through: :progesses
+  has_many :comments, dependent: :destroy
 
   if Rails.env.production?
     after_create :new_user_email, :subscribe

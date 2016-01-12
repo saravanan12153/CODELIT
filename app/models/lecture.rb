@@ -3,6 +3,8 @@ class Lecture < ActiveRecord::Base
   belongs_to :course
   has_many :progesses, dependent: :destroy
   has_many :users, through: :progesses
+  has_many :comments, as: :commentable, dependent: :destroy
+
   friendly_id :title, use: :slugged
 
   def previous

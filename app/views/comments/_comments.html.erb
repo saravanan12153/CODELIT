@@ -1,0 +1,35 @@
+<div class="ibox chat-view">
+
+  <div class="ibox-title">
+    <% if commentable.comments.any? %>
+      <small class="pull-right text-muted">Last message:  <%= commentable.comments.last.created_at %></small>
+    <% end %>
+    Discussions
+  </div>
+
+  <div class="ibox-content">
+    <div class="row">
+      <div class="col-md-12 ">
+        <div class="chat-discussion">
+
+          <% x=0 %>
+          <% commentable.comments.order("created_at ASC").each do |comment| %>
+            <div class="chat-message <%='left' if x%2==0 %><%='right' if x%2!=0 %>">
+              <img class="message-avatar" src="<%= comment.user.avatar(:medium) %>" alt="">
+              <div class="message">
+                <a class="message-author" href="#"> <%= comment.user.name %> </a>
+                <span class="message-date"><i class="fa fa-clock-o"></i> <%= time_ago_in_words(comment.created_at) %> ago</span>
+                    <span class="message-content">
+                        <%= raw comment.content_html %>
+                    </span>
+              </div>
+            </div>
+            <% x=x+1 %>
+          <% end %>
+
+        </div>
+      </div>
+    </div>
+    <%= render partial: "comments/form", locals: {commentable: commentable, commentable_parent: commentable_parent} %>
+  </div>
+</div>

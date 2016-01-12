@@ -61,6 +61,9 @@ gem 'omniauth-google-oauth2'
 # for fb integration
 gem 'omniauth-facebook'
 
+# for auto link detection in comments
+gem 'auto_html', '~> 1.6'
+
 group :doc do
   gem 'sdoc', require: false
 end

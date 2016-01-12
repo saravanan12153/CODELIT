@@ -3,7 +3,9 @@ Myapp::Application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :users, controllers: {registrations: 'registrations', omniauth_callbacks: "omniauth_callbacks"}
   resources :courses, only: [:index, :show] do
-    resources :lectures, only: [:index, :show]
+    resources :lectures, only: [:index, :show] do
+      resources :comments, module: :lectures
+    end
     resources :enrols, only: [:create]
   end
   # The priority is based upon order of creation: first created -> highest priority.
