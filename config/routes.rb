@@ -19,6 +19,8 @@ Myapp::Application.routes.draw do
       post :mark_as_read
     end
   end
+
+  match 'search' => 'search#index', via: [:get, :post], as: :search
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

@@ -434,6 +434,7 @@ DEPENDENCIES
   puma
   pundit
   rails (= 4.2.3)
+  ransack (~> 1.7)
   sass-rails (~> 5.0.4)
   sdoc
   spring

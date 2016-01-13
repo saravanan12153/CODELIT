@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   include Pundit
   protect_from_forgery with: :exception
   layout :layout_by_resource
+  before_filter :set_search
 
   # rescue from pundit by going the function
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
@@ -21,6 +22,11 @@ class ApplicationController < ActionController::Base
     flash[:alert] = "You are not authorized to perform this action."
     redirect_to(request.referrer || root_path)
   end
+
+  def set_search
+    @q=Course.search(params[:q])
+  end
+
 
   protected
 
