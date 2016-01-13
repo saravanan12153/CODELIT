@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
   has_many :progesses, dependent: :destroy
   has_many :lectures, through: :progesses
   has_many :comments, dependent: :destroy
+  has_many :notifications, foreign_key: :recipient_id
 
   if Rails.env.production?
     after_create :new_user_email, :subscribe

@@ -14,6 +14,11 @@ Myapp::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'home#index'
   resources :users, only: [:show, :index]
+  resources :notifications do
+    collection do
+      post :mark_as_read
+    end
+  end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

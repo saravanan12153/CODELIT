@@ -21,6 +21,7 @@
 //= require pace/pace.min.js
 //= require highlight.pack
 //= require slimscroll/jquery.slimscroll.min.js
+//= require notifications.js.coffee
 //= require_tree .
 
 toastr.options = {

@@ -10,6 +10,14 @@
         </div>
         <ul class="nav navbar-top-links navbar-right">
           <% if user_signed_in? %>
+            <li class="dropdown" data-behavior="notifications" data-notifications='<%= render template: "notifications/index", formats: [:json] %>'>
+                <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#" data-behavior="notifications-link">
+                    <i class="fa fa-bell"></i>  <span class="label label-danger" data-behavior="unread-count"></span>
+                </a>
+                <ul class="dropdown-menu dropdown-messages" data-behavior="notification-items">
+
+                </ul>
+            </li>
             <li class="dropdown">
               <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
                 <%= image_tag current_user.avatar.url(:medium), alt: current_user.name, class: "img-circle", style: "width: 20px; height: 20px" %> <i class="fa fa-caret-down"></i>
