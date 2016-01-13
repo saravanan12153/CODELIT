@@ -12,14 +12,26 @@
               </div>
               <%= image_tag @user.avatar.url(:medium), alt: @user.name, class: "img-circle circle-border m-b-md", style: "width: 100px; height: 100px" %>
               <div>
-                  <span><%= link_to '<i class="fa fa-envelope-o"></i>'.html_safe, "mailto:#{@user.email}", target: '_blank' %></span> |
-                  <span>350 Following</span> |
-                  <span>610 Followers</span>
+                  <span><a href="mailto:<%= @user.email %>" target="_blank" style="color: #ffffff;"><i class="fa fa-envelope-o"></i></a></span>
+                  <% if @user.twitter.present? %>
+                    | <span><a href="<%= @user.twitter %>" target="_blank" style="color: #ffffff;"><i class="fa fa-twitter"></i></a></span>
+                  <% end %>
+                  <% if @user.facebook.present? %>
+                    | <span><a href="<%= @user.facebook %>" target="_blank" style="color: #ffffff;"><i class="fa fa-facebook"></i></a></span>
+                  <% end %>
+                  <% if @user.linkedin.present? %>
+                    | <span><a href="<%= @user.linkedin %>" target="_blank" style="color: #ffffff;"><i class="fa fa-linkedin"></i></a></span>
+                  <% end %>
+                  <% if @user.git.present? %>
+                    | <span><a href="<%= @user.git %>" target="_blank" style="color: #ffffff;"><i class="fa fa-git"></i></a></span>
+                  <% end %>
+                  <% if @user.website.present? %>
+                    | <span><a href="<%= @user.website %>" target="_blank" style="color: #ffffff;"><i class="fa fa-globe"></i></a></span>
+                  <% end %>
               </div>
           </div>
           <div class="widget-text-box">
-              <h4 class="media-heading">Alex Smith</h4>
-              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+              <p><%= @user.about %></p>
               <div class="text-right">
                 <% if @user == current_user %>
                   <%= link_to '<i class="fa fa-pencil-square-o"></i> Edit Profile'.html_safe, edit_user_registration_path, class: "btn btn-primary btn-xs" %>
