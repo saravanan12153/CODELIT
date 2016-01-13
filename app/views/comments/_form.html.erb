@@ -5,7 +5,7 @@
       <%= form_for [commentable_parent, commentable, Comment.new] do |f| %>
 
         <div class="form-group">
-          <%= f.text_area :content, class: "form-control message-input", placeholder: "Enter message text" %>
+          <%= f.text_area :content, class: "form-control message-input", placeholder: "Enter message text", data: {behavior: "autocomplete"} %>
         </div>
         <div class="text-center">
           <%= f.submit class: "btn-block btn btn-primary btn-lg" %>

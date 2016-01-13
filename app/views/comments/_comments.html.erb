@@ -24,7 +24,7 @@
                 <% end %>
                 <i class="fa fa-clock-o"></i> <%= time_ago_in_words(comment.created_at) %> ago</span>
                     <span class="message-content">
-                        <%= raw comment.content_html %>
+                        <%= raw(linked_users(comment.content_html)) %>
                     </span>
               </div>
             </div>

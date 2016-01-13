@@ -64,6 +64,9 @@ gem 'omniauth-facebook'
 # for auto link detection in comments
 gem 'auto_html', '~> 1.6'
 
+# for at.js for mentions
+gem 'jquery-atwho-rails', '~> 1.3', '>= 1.3.2'
+
 group :doc do
   gem 'sdoc', require: false
 end

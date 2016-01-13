@@ -13,6 +13,7 @@
 //= require jquery/jquery-2.1.1.js
 //= require jquery.turbolinks
 //= require jquery_ujs
+//= require jquery.atwho
 //= require toastr.min
 //= require jquery-ui
 //= require bootstrap-sprockets
