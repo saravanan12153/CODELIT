@@ -82,6 +82,7 @@ group :development do
   # for better error display
   gem "better_errors"
   gem "binding_of_caller"
+  gem 'meta_request'
 
   # for email in development
   gem "letter_opener"

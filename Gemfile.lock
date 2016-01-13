@@ -82,6 +82,7 @@ GEM
       builder (>= 2.0.0)
     builder (3.2.2)
     byebug (8.2.1)
+    callsite (0.0.11)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.7)
@@ -236,6 +237,7 @@ GEM
     gibbon (2.2.0)
       faraday (>= 0.9.1)
       multi_json (>= 1.11.0)
+    git-version-bump (0.15.1)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     has_scope (0.6.0)
@@ -277,6 +279,10 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
+    meta_request (0.3.4)
+      callsite (~> 0.0, >= 0.0.11)
+      rack-contrib (~> 1.1)
+      railties (>= 3.0.0, < 5.0.0)
     mime-types (2.99)
     mimemagic (0.3.0)
     mini_portile2 (2.0.0)
@@ -321,6 +327,9 @@ GEM
       activesupport (>= 3.0.0)
     querystring (0.1.0)
     rack (1.6.4)
+    rack-contrib (1.4.0)
+      git-version-bump (~> 0.15)
+      rack (~> 1.4)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.2.3)
@@ -427,6 +436,7 @@ DEPENDENCIES
   jquery-turbolinks
   jquery-ui-rails
   letter_opener
+  meta_request
   omniauth
   omniauth-facebook
   omniauth-google-oauth2
