@@ -1,0 +1,21 @@
+<div class="col-lg-4 blog">
+  <div class="ibox">
+    <div class="ibox-content" style="min-height: 250px; max-height: 250px; overflow: scroll">
+      <a href="<%= cast_path(cast) %>">
+        <h2>
+          <%= cast.title %>
+        </h2>
+      </a>
+
+      <div class="small m-b-xs">
+        <strong><%= link_to "Sulman Baig", "https://codelit.com/users/sulman-baig" %></strong>
+              <span class="text-muted"><i class="fa fa-clock-o"></i> <%= cast.created_at.strftime("%d %b, %Y") %></span>
+      </div>
+      <p>
+        <% require 'rubygems'
+           require 'nokogiri' %>
+        <%= Nokogiri::HTML(cast.transcript).text.truncate(200, separator: ' ') %>
+      </p>
+    </div>
+  </div>
+</div>

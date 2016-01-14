@@ -1,0 +1,81 @@
+<!-- Page Title-->
+<div class="row wrapper border-bottom white-bg page-heading">
+  <div class="col-lg-10">
+    <h2><%= @cast.title %></h2>
+    <ol class="breadcrumb">
+      <li>
+        <a href="<%= casts_path %>">Code Casts</a>
+      </li>
+      <li class="active">
+        <strong><%= @cast.title %></strong>
+      </li>
+    </ol>
+  </div>
+</div>
+
+<div class="row">
+  <br/>
+  <div class="col-sm-8 col-sm-offset-2">
+    <% if @cast.next %>
+      <%= link_to "Next <i class='fa fa-arrow-circle-right'></i>".html_safe, cast_path(@cast.next), class: "btn btn-primary pull-right" %>
+    <% end %>
+    <% if @cast.previous %>
+      <%= link_to "<i class='fa fa-arrow-circle-left'></i> Previous".html_safe, cast_path(@cast.previous), class: "btn btn-primary pull-left" %>
+    <% end %>
+  </div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight ecommerce">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="tabs-container">
+        <ul class="nav nav-tabs">
+          <li class="active"><a id="t1" data-toggle="tab" href="#tab-1"> Video</a></li>
+          <li class=""><a id="t2" data-toggle="tab" href="#tab-2"> Transcript</a></li>
+          <li class=""><a id="t3" data-toggle="tab" href="#tab-3"> Discussion (<%= @cast.comments.count %>)</a></li>
+        </ul>
+        <div class="tab-content">
+          <div id="tab-1" class="tab-pane active">
+            <div class="panel-body">
+              <figure class="embed-responsive embed-responsive-16by9">
+                <%= display(@cast.video) %>
+              </figure>
+            </div>
+          </div>
+          <div id="tab-2" class="tab-pane">
+            <div class="panel-body">
+              <div class="text-muted text-center"><i class="fa fa-clock-o"></i> <%= @cast.created_at.strftime("%d %b, %Y") %></div>
+              <p><%= raw @cast.transcript %></p>
+            </div>
+          </div>
+          <div id="tab-3" class="tab-pane">
+            <div class="panel-body">
+              <%= render partial: "comments/comments", locals: {commentable: @cast, commentable_parent: nil} %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+<br>
+<br>
+<% content_for :javascript do %>
+  <script type="text/javascript">
+      $(document).ready(function () {
+        // Adding responsive class to lecture video
+        $("iframe").addClass("embed-responsive-item");
+      });
+
+
+      // making lecture video full screen
+      $(document).on('webkitfullscreenchange mozfullscreenchange fullscreenchange', function (e) {
+        $('body').hasClass('fullscreen-video') ? $('body').removeClass('fullscreen-video') : $('body').addClass('fullscreen-video')
+      });
+
+
+    </script>
+<% end %>
+

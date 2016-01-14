@@ -24,6 +24,9 @@ Myapp::Application.routes.draw do
   resources :recipes, only: [:index, :show] do
     resources :comments
   end
+  resources :casts, only: [:index, :show] do
+    resources :comments
+  end
   get 'feed' => 'recipes#feed'
   get 'recipes?tag=:tag', to: 'recipes#index', as: :tag
   # Example of regular route:

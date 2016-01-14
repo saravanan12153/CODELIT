@@ -17,6 +17,16 @@ class CommentsController < ApplicationController
         @comment.mentioned_users.each do |user|
           Notification.create(recipient_id: user.id, actor: current_user, action: "mentioned you in a comment", notifiable: @commentable)
         end
+      elsif request.path.include?('cast')
+        @ThreadUsers = @commentable.comments.pluck(:user_id).uniq
+        @ThreadUsers.each do |user|
+          if current_user.id != user
+            Notification.create(recipient_id: user, actor: current_user, action: "also commented in a code-cast", notifiable: @commentable)
+          end
+        end
+        @comment.mentioned_users.each do |user|
+          Notification.create(recipient_id: user.id, actor: current_user, action: "mentioned you in a comment", notifiable: @commentable)
+        end
       elsif params[:course_id] && request.path.include?('lecture')
         @ThreadUsers = @commentable.comments.pluck(:user_id).uniq
         @ThreadUsers.each do |user|
@@ -50,6 +60,8 @@ class CommentsController < ApplicationController
   def commentable
     if request.path.include?('recipe') # be careful. any path with 'blog' in it will match
       @commentable = Recipe.friendly.find(params[:recipe_id])
+    elsif request.path.include?('cast') # be careful. any path with 'blog' in it will match
+      @commentable = Cast.friendly.find(params[:cast_id])
     elsif params[:course_id] && request.path.include?('lecture')
       @course = Course.where(publish: true).friendly.find(params[:course_id])
       @commentable = @course.lectures.where(publish: true).friendly.find(params[:lecture_id]) # assuming Course has_many lectures
