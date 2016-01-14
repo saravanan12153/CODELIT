@@ -21,6 +21,11 @@ Myapp::Application.routes.draw do
   end
 
   match 'search' => 'search#index', via: [:get, :post], as: :search
+  resources :recipes, only: [:index, :show] do
+    resources :comments
+  end
+  get 'feed' => 'recipes#feed'
+  get 'recipes?tag=:tag', to: 'recipes#index', as: :tag
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

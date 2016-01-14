@@ -1,0 +1,81 @@
+<!-- Page Title-->
+<div class="row wrapper border-bottom white-bg page-heading">
+  <div class="col-lg-10">
+    <h2><%= @recipe.title %></h2>
+    <ol class="breadcrumb">
+      <li>
+        <a href="<%= recipes_path %>">Code Recipes</a>
+      </li>
+      <li class="active">
+        <strong><%= @recipe.title %></strong>
+      </li>
+    </ol>
+  </div>
+</div>
+
+<div class="row">
+  <br/>
+  <div class="col-sm-8 col-sm-offset-2">
+    <% if @recipe.next %>
+      <%= link_to "Next <i class='fa fa-arrow-circle-right'></i>".html_safe, recipe_path(@recipe.next), class: "btn btn-primary pull-right" %>
+    <% end %>
+    <% if @recipe.previous %>
+      <%= link_to "<i class='fa fa-arrow-circle-left'></i> Previous".html_safe, recipe_path(@recipe.previous), class: "btn btn-primary pull-left" %>
+    <% end %>
+  </div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight ecommerce">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="tabs-container">
+        <ul class="nav nav-tabs">
+          <li class="active"><a id="t1" data-toggle="tab" href="#tab-1"> Content</a></li>
+          <li class=""><a id="t2" data-toggle="tab" href="#tab-2"> Discussion (<%= @recipe.comments.count %>)</a></li>
+        </ul>
+        <div class="tab-content">
+          <div id="tab-1" class="tab-pane active">
+            <div class="panel-body">
+              <div class="text-muted text-center"><i class="fa fa-clock-o"></i> <%= @recipe.created_at.strftime("%d %b, %Y") %></div>
+              <p><%= raw @recipe.content %></p>
+              <hr/>
+              <div class="row">
+                <div class="col-md-6">
+                  <h5>Tags:</h5>
+                  <% @recipe.tags.each do |tag| %>
+                      <%= link_to tag.name, tag_path(tag.name), class: "btn btn-primary btn-xs" %>
+                  <% end %>
+                </div>
+                <div class="col-md-6">
+                  <div class="small text-right">
+                    <h5>Stats:</h5>
+                    <div> <i class="fa fa-comments-o"> </i> <%= @recipe.comments.count %> comments </div>
+                    <i class="fa fa-eye"> </i> <%= @recipe.count_views %> views
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="tab-2" class="tab-pane">
+            <div class="panel-body">
+              <%= render partial: "comments/comments", locals: {commentable: @recipe, commentable_parent: nil} %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+<br>
+<br>
+<% content_for :javascript do %>
+  <script type="text/javascript">
+    $(document).ready(function () {
+
+    });
+
+  </script>
+<% end %>
+

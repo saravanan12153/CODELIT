@@ -4,7 +4,7 @@ class CoursesController < ApplicationController
   # GET /courses
   # GET /courses.json
   def index
-    @courses = Course.all.order("updated_at ASC")
+    @courses = Course.where(publish: true).all.order("updated_at DESC")
   end
 
   # GET /courses/1

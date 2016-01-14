@@ -41,6 +41,11 @@
                 </ul>
               </li>
             <% end %>
+            <li class="<%= 'active' if controller.controller_name == "recipes" %>">
+              <%= link_to recipes_path do %>
+              <i class="fa fa-rss"></i> <span class="nav-label">Code Recipes</span>
+              <% end %>
+            </li>
         </ul>
 
     </div>

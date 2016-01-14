@@ -1,0 +1,36 @@
+<div class="col-lg-4 blog">
+  <div class="ibox">
+    <div class="ibox-content" style="min-height: 250px; max-height: 250px; overflow: scroll">
+      <a href="<%= recipe_path(recipe) %>">
+        <h2>
+          <%= recipe.title %>
+        </h2>
+      </a>
+
+      <div class="small m-b-xs">
+        <strong><%= link_to "Sulman Baig", "https://codelit.com/users/sulman-baig" %></strong>
+              <span class="text-muted"><i class="fa fa-clock-o"></i> <%= recipe.created_at.strftime("%d %b, %Y") %></span>
+      </div>
+      <p>
+        <% require 'rubygems'
+           require 'nokogiri' %>
+        <%= Nokogiri::HTML(recipe.content).text.truncate(200, separator: ' ') %>
+      </p>
+          <div class="row">
+            <div class="col-md-6">
+              <h5>Tags:</h5>
+              <% recipe.tags.each do |tag| %>
+                  <%= link_to tag.name, tag_path(tag.name), class: "btn btn-primary btn-xs" %>
+              <% end %>
+            </div>
+            <div class="col-md-6">
+              <div class="small text-right">
+                <h5>Stats:</h5>
+                <div> <i class="fa fa-comments-o"> </i> <%= recipe.comments.count %> comments </div>
+                <i class="fa fa-eye"> </i> <%= recipe.count_views %> views
+              </div>
+            </div>
+          </div>
+    </div>
+  </div>
+</div>

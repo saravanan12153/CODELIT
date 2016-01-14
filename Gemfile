@@ -70,6 +70,9 @@ gem 'jquery-atwho-rails', '~> 1.3', '>= 1.3.2'
 # for search functionality
 gem 'ransack', '~> 1.7'
 
+# for tags on blogs
+gem 'acts-as-taggable-on', '~> 3.4'
+
 group :doc do
   gem 'sdoc', require: false
 end

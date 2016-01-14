@@ -20,7 +20,11 @@
                 <a class="message-author" href="<%= user_path(comment.user) %>"> <%= comment.user.name %> </a>
                 <span class="message-date">
                 <% if comment.user == current_user %>
-                  <%= link_to '<i class="fa fa-trash"></i>'.html_safe, course_lecture_comment_path(@course,commentable,comment), method: :delete %>
+                  <% if request.path.include?('recipe') %>
+                    <%= link_to '<i class="fa fa-trash"></i>'.html_safe, recipe_comment_path(commentable,comment), method: :delete %>
+                  <% elsif params[:course_id] && request.path.include?('lecture') %>
+                    <%= link_to '<i class="fa fa-trash"></i>'.html_safe, course_lecture_comment_path(@course,commentable,comment), method: :delete %>
+                  <% end %>
                 <% end %>
                 <i class="fa fa-clock-o"></i> <%= time_ago_in_words(comment.created_at) %> ago</span>
                     <span class="message-content">
