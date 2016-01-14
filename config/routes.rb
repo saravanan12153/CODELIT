@@ -28,6 +28,10 @@ Myapp::Application.routes.draw do
   end
   get 'feed' => 'recipes#feed'
   get 'recipes?tag=:tag', to: 'recipes#index', as: :tag
+  get 'terms' => 'home#terms'
+  get 'privacy' => 'home#privacy'
+  get "pricing" => "home#pricing"
+  get "/about" => "home#about"
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

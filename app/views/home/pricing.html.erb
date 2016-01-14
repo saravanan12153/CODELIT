@@ -1,0 +1,47 @@
+<div class="wrapper wrapper-content animated fadeIn">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="jumbotron">
+        <h1>Let's be Clear</h1>
+
+        <p><strong>NO MONTHLY SUBSCRIPTION.</strong> Just buy a course and get life-time access to the course.</p>
+
+        <p><strong>FREE CODE-CASTS.</strong> Get Free access to Code-Casts for life-time without paying a cent ever.</p>
+
+        <p class="text-center">
+          <a role="button" class="btn btn-primary btn-lg" href="<%= new_user_registration_path %>">Free Sign Up Now</a>
+        </p>
+      </div>
+    </div>
+
+    <div class="col-lg-12">
+      <div class="jumbotron white-bg">
+        <h1 class="text-center">Payment Perks</h1>
+        <div class="text-center">
+        <a href="https://www.braintreegateway.com/merchants/<%= ENV['BRAINTREE_MERCHANT_ID'] %>/verified" target="_blank" class="text-center">
+          <img src="https://s3.amazonaws.com/braintree-badges/braintree-badge-wide-dark.png" width="280px" height ="44px" border="0" class="img-responsive text-center" style="display: unset;"/>
+        </a>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <p><i class="fa fa-ban"></i> No Monthly/Yearly Subscription Charges</p>
+
+            <p><i class="fa fa-credit-card"></i> Pay with Visa, MasterCard, Discover, AMEX, Maestro, Maestro UK</p>
+
+            <p><i class="fa fa-cc-paypal"></i> Pay with PayPal (Available Now)</p>
+          </div>
+          <div class="col-md-6">
+            <p><i class="fa fa-thumbs-o-up"></i> 15 days money-back guarantee</p>
+
+            <p><i class="fa fa-fighter-jet"></i> No long-term contracts</p>
+
+            <p><i class="fa fa-hand-o-right"></i> Get courses & code-casts access for lifetime. </p>
+          </div>
+        </div>
+        <p class="text-center">
+          <a role="button" class="btn btn-primary btn-lg" href="<%= new_user_registration_path %>">Free Sign Up Now</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

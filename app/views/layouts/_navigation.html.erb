@@ -12,11 +12,6 @@
                 </div>
             </li>
           <% end %>
-            <li class="<%= 'active' if current_page?('/') %>">
-                <%= link_to "/" do %>
-                <i class="fa fa-laptop"></i> <span class="nav-label">Main page</span>
-                <% end %>
-            </li>
             <li class="<%= 'active' if controller.controller_name == "courses" %>">
                 <%= link_to courses_path do %>
                 <i class="fa fa-desktop"></i> <span class="nav-label">Courses</span>
@@ -50,6 +45,16 @@
               <%= link_to recipes_path do %>
               <i class="fa fa-rss"></i> <span class="nav-label">Code Recipes</span>
               <% end %>
+            </li>
+            <li class="<%= 'active' if current_page?(pricing_path) || current_page?(about_path) %>">
+              <a href="#"><i class="fa fa-question"></i>
+                <span class="nav-label">About CODElit </span><span class="fa arrow"></span></a>
+              <ul class="nav nav-second-level">
+                <li><%= link_to '<i class="fa fa-money"></i> Pricing'.html_safe, pricing_path %></li>
+                <li><%= link_to '<i class="fa fa-info-circle"></i> About Us'.html_safe, about_path %></li>
+                <li><%= link_to '<i class="fa fa-files-o"></i> CODElit Terms & Conditions of Use'.html_safe, terms_path %></li>
+                <li><%= link_to '<i class="fa fa-lock"></i> CODElit Privacy Policy'.html_safe, privacy_path %></li>
+              </ul>
             </li>
         </ul>
 
