@@ -23,7 +23,7 @@ gem 'devise'
 gem 'puma'
 
 # for admin section
-gem 'activeadmin', github: 'activeadmin'
+gem 'rails_admin', '~> 0.8.1'
 
 # for dotenv
 gem 'dotenv-rails'

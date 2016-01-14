@@ -1,21 +1,16 @@
-<div class="col-lg-4 blog">
-  <div class="ibox">
-    <div class="ibox-content" style="min-height: 250px; max-height: 250px; overflow: scroll">
-      <a href="<%= cast_path(cast) %>">
-        <h2>
-          <%= cast.title %>
-        </h2>
-      </a>
-
-      <div class="small m-b-xs">
-        <strong><%= link_to "Sulman Baig", "https://codelit.com/users/sulman-baig" %></strong>
-              <span class="text-muted"><i class="fa fa-clock-o"></i> <%= cast.created_at.strftime("%d %b, %Y") %></span>
-      </div>
-      <p>
-        <% require 'rubygems'
-           require 'nokogiri' %>
-        <%= Nokogiri::HTML(cast.transcript).text.truncate(200, separator: ' ') %>
-      </p>
+<div class="col-md-3">
+  <%= link_to cast_path(cast) do %>
+  <div class="panel panel-primary" style="color: black">
+    <div class="panel-heading">
+      <%= cast.title %>
+    </div>
+    <div class="panel-body">
+      <%= image_tag cast.avatar.url(:medium), alt: cast.title, class: "img-thumbnail" %>
+    </div>
+    <div class="panel-footer">
+      <span class="small pull-left"> <i class="fa fa-comments-o"> </i> <%= cast.comments.count %> comments</span>
+      <span class="small pull-right"><i class="fa fa-eye"> </i> <%= cast.count_views %> views</span><br/>
     </div>
   </div>
+  <% end %>
 </div>

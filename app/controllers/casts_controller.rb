@@ -6,6 +6,7 @@ class CastsController < ApplicationController
     end
 
     def show
+      @cast.update_column('count_views', @cast.count_views + 1) if @cast.present?
     end
 
     private

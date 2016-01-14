@@ -1,6 +1,5 @@
 Myapp::Application.routes.draw do
-  devise_for :admin_users, ActiveAdmin::Devise.config
-  ActiveAdmin.routes(self)
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users, controllers: {registrations: 'registrations', omniauth_callbacks: "omniauth_callbacks"}
   resources :courses, only: [:index, :show] do
     resources :lectures, only: [:index, :show] do
