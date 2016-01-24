@@ -11,40 +11,40 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'therubyracer', platforms: :ruby
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
-gem 'jquery-rails'
+gem 'jquery-rails', '~> 4.1'
 
 # for turbolinks
-gem 'jquery-turbolinks'
+gem 'jquery-turbolinks', '~> 2.1'
 
 # for user authentication
-gem 'devise'
+gem 'devise', '~> 3.5', '>= 3.5.3'
 
 # puma webserver
-gem 'puma'
+gem 'puma', '~> 2.15', '>= 2.15.3'
 
 # for admin section
 gem 'rails_admin', '~> 0.8.1'
 
 # for dotenv
-gem 'dotenv-rails'
+gem 'dotenv-rails', '~> 2.1'
 
 # for auto-complete search
-gem 'jquery-ui-rails'
+gem 'jquery-ui-rails', '~> 5.0', '>= 5.0.5'
 
 # for attachments
 gem 'paperclip', '~> 4.3'
 
 # for AWS services
-gem 'fog'
+gem 'fog', '~> 1.37'
 
 # for embeding videos
-gem 'embedly'
+gem 'embedly', '~> 1.9', '>= 1.9.1'
 
 # for payments
 gem 'braintree', '~> 2.56'
 
 # for authorizations
-gem 'pundit'
+gem 'pundit', '~> 1.1'
 
 # for friendly ids
 gem 'friendly_id', '~> 5.1.0'
@@ -53,13 +53,13 @@ gem 'friendly_id', '~> 5.1.0'
 gem 'gibbon', '~> 2.2.0'
 
 # for social networks login
-gem 'omniauth'
+gem 'omniauth', '~> 1.3', '>= 1.3.1'
 
 # for google+ integration
-gem 'omniauth-google-oauth2'
+gem 'omniauth-google-oauth2', '~> 0.3.0'
 
 # for fb integration
-gem 'omniauth-facebook'
+gem 'omniauth-facebook', '~> 3.0'
 
 # for auto link detection in comments
 gem 'auto_html', '~> 1.6'
@@ -83,10 +83,10 @@ group :development do
   gem 'spring'
 
   # for better error display
-  gem "better_errors"
-  gem "binding_of_caller"
-  gem 'meta_request'
+  gem 'better_errors', '~> 2.1', '>= 2.1.1'
+  gem 'binding_of_caller', '~> 0.7.2'
+  gem 'meta_request', '~> 0.3.4'
 
   # for email in development
-  gem "letter_opener"
+  gem 'letter_opener', '~> 1.4', '>= 1.4.1'
 end
