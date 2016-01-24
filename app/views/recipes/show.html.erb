@@ -1,3 +1,34 @@
+<% require 'rubygems'
+   require 'nokogiri' %>
+<!-- Meta Data -->
+<% title @recipe.title %>
+<% set_meta_tags description: Nokogiri::HTML(@recipe.content).text.truncate(170, separator: ' ') %>
+<% set_meta_tags keywords: @recipe.title.split(' ').join(",") %>
+<% set_meta_tags canonical: recipe_url(@recipe) %>
+<% set_meta_tags author: "http://www.sulmanbaig.com" %>
+<% set_meta_tags publisher: "https://codelit.com" %>
+<% set_meta_tags og: {
+  title:    @recipe.title+' | CODElit',
+  type:     'website',
+  url:      recipe_url(@recipe),
+  image:    image_url('logo.png'),
+  description: Nokogiri::HTML(@recipe.content).text.truncate(170, separator: ' '),
+  site_name: "CODElit",
+  locale:   'en_US'
+} %>
+<% set_meta_tags twitter: {
+  card: "summary",
+  site: "@codelitweb",
+  title: @recipe.title+" | CODElit",
+  image: image_url('logo.png'),
+  description: Nokogiri::HTML(@recipe.content).text.truncate(170, separator: ' ')
+} %>
+<% set_meta_tags fb: {
+  app_id: "429015597309000"
+  } %>
+<% set_meta_tags icon: image_url('favicon.ico') %>
+<!-- END Meta Data -->
+
 <!-- Page Title-->
 <div class="row wrapper border-bottom white-bg page-heading">
   <div class="col-lg-10">
@@ -67,7 +98,7 @@
   </div>
 
 </div>
-</div>
+
 <br>
 <br>
 <% content_for :javascript do %>

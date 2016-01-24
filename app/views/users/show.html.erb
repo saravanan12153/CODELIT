@@ -1,3 +1,36 @@
+<!-- Meta Data -->
+<% title @user.name %>
+<% set_meta_tags description: Nokogiri::HTML(@user.about).text.truncate(170, separator: ' ') %>
+<% set_meta_tags keywords: @user.name.split(' ').join(",") %>
+<% set_meta_tags canonical: user_url(@user) %>
+<% set_meta_tags author: @user.website %>
+<% set_meta_tags publisher: "https://codelit.com" %>
+<% set_meta_tags og: {
+  title:    @user.name+' | CODElit',
+  type:     'profile',
+  url:      user_url(@user),
+  profile: {
+    first_name: @user.name,
+    username: @user.facebook,
+    },
+  image:    @user.avatar.url(:original),
+  description: Nokogiri::HTML(@user.about).text.truncate(170, separator: ' '),
+  site_name: "CODElit",
+  locale:   'en_US'
+} %>
+<% set_meta_tags twitter: {
+  card: "summary",
+  site: "@codelitweb",
+  title: @user.name+" | CODElit",
+  image: @user.avatar.url(:original),
+  description: Nokogiri::HTML(@user.about).text.truncate(170, separator: ' ')
+} %>
+<% set_meta_tags fb: {
+  app_id: "429015597309000"
+  } %>
+<% set_meta_tags icon: image_url('favicon.ico') %>
+<!-- END Meta Data -->
+
 <div class="wrapper wrapper-content animated fadeInRight">
 
 

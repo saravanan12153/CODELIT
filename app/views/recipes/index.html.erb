@@ -1,3 +1,32 @@
+<!-- Meta Data -->
+<% title "Code Recipes" %>
+<% set_meta_tags description: "CODElit(CODE literature) gives Recipes of different programming chunks and help codes." %>
+<% set_meta_tags keywords: %w[recipes code online learning codelit literature casts blog ruby rails rubyonrails courses programming coding] %>
+<% set_meta_tags canonical: recipes_url %>
+<% set_meta_tags author: "http://www.sulmanbaig.com" %>
+<% set_meta_tags publisher: "https://codelit.com" %>
+<% set_meta_tags og: {
+  title:    'Code Recipes | CODElit',
+  type:     'website',
+  url:      recipes_url,
+  image:    image_url('logo.png'),
+  description: "CODElit(CODE literature) gives Recipes of different programming chunks and help codes.",
+  site_name: "CODElit",
+  locale:   'en_US'
+} %>
+<% set_meta_tags twitter: {
+  card: "summary",
+  site: "@codelitweb",
+  title: "Code Recipes | CODElit",
+  image: image_url('logo.png'),
+  description: "CODElit(CODE literature) gives Recipes of different programming chunks and help codes."
+} %>
+<% set_meta_tags fb: {
+  app_id: "429015597309000"
+  } %>
+<% set_meta_tags icon: image_url('favicon.ico') %>
+<!-- END Meta Data -->
+
 <div class="row wrapper border-bottom white-bg page-heading">
   <div class="col-lg-10">
     <h2>Recipes<span class="pull-right"><%= link_to '<i class="fa fa-rss-square"></i> Recipe Feed'.html_safe, feed_url(:rss), class: "btn btn-primary" %></span>

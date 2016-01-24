@@ -73,6 +73,9 @@ gem 'ransack', '~> 1.7'
 # for tags on blogs
 gem 'acts-as-taggable-on', '~> 3.4'
 
+# for meta data
+gem 'meta-tags', '~> 2.1'
+
 group :doc do
   gem 'sdoc', require: false
 end

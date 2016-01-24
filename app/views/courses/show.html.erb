@@ -1,3 +1,32 @@
+<!-- Meta Data -->
+<% title @course.title %>
+<% set_meta_tags description: @course.subtitle %>
+<% set_meta_tags keywords: @course.title.split(' ').join(",") %>
+<% set_meta_tags canonical: course_url(@course) %>
+<% set_meta_tags author: "http://www.sulmanbaig.com" %>
+<% set_meta_tags publisher: "https://codelit.com" %>
+<% set_meta_tags og: {
+  title:    @course.title+' | CODElit',
+  type:     'website',
+  url:      course_url(@course),
+  image:    @course.image.url(:original),
+  description: @course.subtitle,
+  site_name: "CODElit",
+  locale:   'en_US'
+} %>
+<% set_meta_tags twitter: {
+  card: "summary",
+  site: "@codelitweb",
+  title: @course.title+" | CODElit",
+  image: @course.image.url(:original),
+  description: @course.subtitle
+} %>
+<% set_meta_tags fb: {
+  app_id: "429015597309000"
+  } %>
+<% set_meta_tags icon: image_url('favicon.ico') %>
+<!-- END Meta Data -->
+
 <!-- Page Title-->
 <div class="row wrapper border-bottom white-bg page-heading">
   <div class="col-lg-10">
