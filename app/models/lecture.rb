@@ -1,9 +1,11 @@
 class Lecture < ActiveRecord::Base
   extend FriendlyId
   belongs_to :course
+  friendly_id :title, use: :slugged
   has_many :progesses, dependent: :destroy
   has_many :users, through: :progesses
   has_many :comments, as: :commentable, dependent: :destroy
+  validates_uniqueness_of :slug
 
   friendly_id :title, use: :slugged
 

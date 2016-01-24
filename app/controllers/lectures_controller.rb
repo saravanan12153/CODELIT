@@ -1,4 +1,5 @@
 class LecturesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_course
   before_action :set_lecture, only: [:show]
 

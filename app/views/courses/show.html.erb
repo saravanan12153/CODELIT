@@ -27,7 +27,8 @@
               <li class="active"><a id="t1" data-toggle="tab" href="#tab-1">Promo</a></li>
               <% end %>
               <li class=""><a id="t2" data-toggle="tab" href="#tab-2">Description</a></li>
-              <li class=""><a id="t3" data-toggle="tab" href="#tab-3">Get Course</a></li>
+              <li class=""><a id="t3" data-toggle="tab" href="#tab-3">Lectures</a></li>
+              <li class=""><a id="t4" data-toggle="tab" href="#tab-4">Get Course</a></li>
             </ul>
             <div class="tab-content">
               <% unless @course.promo.empty? %>
@@ -45,6 +46,18 @@
                 </div>
               </div>
               <div id="tab-3" class="tab-pane">
+                <div class="panel-body">
+                  <h5 class="text-center">Lectures</h5>
+                  <ul class="folder-list m-b-md" style="padding: 0">
+                    <% @course.lectures.where(publish: true).each do |lecture| %>
+                      <li>
+                        <i class="fa fa-lock "></i> <%= lecture.seq %>. <%= lecture.title %>
+                      </li>
+                    <% end %>
+                  </ul>
+                </div>
+              </div>
+              <div id="tab-4" class="tab-pane">
                 <div class="panel-body">
                   <% if user_signed_in? %>
                     <%= render 'coupon' %>
@@ -89,18 +102,22 @@
       $("iframe").addClass("embed-responsive-item");
       <% if @course.promo.empty? %>
       jQuery('#tab-2').addClass('active');
+      jQuery('#tab-4').removeClass('active');
       jQuery('#tab-3').removeClass('active');
       jQuery('#tab-1').removeClass('active');
       jQuery('#t2').parent('li').addClass('active');
       jQuery('#t3').parent('li').removeClass('active');
+      jQuery('#t4').parent('li').removeClass('active');
       jQuery('#t1').parent('li').removeClass('active');
       <% end %>
       <% if params[:coupon].present? %>
-        jQuery('#tab-3').addClass('active');
+        jQuery('#tab-4').addClass('active');
+        jQuery('#tab-3').removeClass('active');
         jQuery('#tab-2').removeClass('active');
         jQuery('#tab-1').removeClass('active');
-        jQuery('#t3').parent('li').addClass('active');
+        jQuery('#t4').parent('li').addClass('active');
         jQuery('#t2').parent('li').removeClass('active');
+        jQuery('#t3').parent('li').removeClass('active');
         jQuery('#t1').parent('li').removeClass('active');
         <% if user_signed_in? %>
           <% if @coupon.present? && @coupon.total > 0 %>

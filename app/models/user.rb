@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   require 'digest/md5'
   extend FriendlyId
   friendly_id :name, use: :slugged
+  validates_uniqueness_of :slug
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,

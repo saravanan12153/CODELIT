@@ -5,6 +5,7 @@ class Course < ActiveRecord::Base
   has_many :enrols, dependent: :destroy
   has_many :users, through: :enrols
   friendly_id :title, use: :slugged
+  validates_uniqueness_of :slug
 
   has_attached_file :image, styles: {medium: "500x500#"}, default_url: ENV["COURSE_PLACEHOLDER"]
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
