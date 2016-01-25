@@ -15,16 +15,15 @@
 
 
 </head>
-<body id="page-top">
+<body id="page-top" class="landing-page">
 
 <!-- Main view  -->
 <%= yield %>
 
-<%= render 'shared/toasts' %>
 <!-- Include javascript per-view -->
 <!-- For demo purpose we include javascript in view but you can easily start SeedProject and organize it with Rails asset pipeline as you want -->
 <!-- Main javascript files -->
 <%= javascript_include_tag 'landing', 'data-turbolinks-track' => true %>
-
+<%= render 'shared/toasts' %>
 </body>
 </html>

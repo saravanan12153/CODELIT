@@ -1,6 +1,7 @@
 /*
+*= require toastr.min
 *= require landing/bootstrap.min
 *= require landing/animate.min
 *= require font-awesome
-*= require landing/style
+*= require landing/style.css
 */

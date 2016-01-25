@@ -22,7 +22,7 @@
 //= require highlight.pack
 //= require slimscroll/jquery.slimscroll.min.js
 //= require notifications.js.coffee
-//= require_tree .
+//= require inspinia.js
 
 toastr.options = {
   "closeButton": true,
