@@ -3,6 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="alternate" type="application/rss+xml" title="CODElit RSS Feed" href="https://codelit.com/feed?format=rss">
+  <!-- Pinterest confirm Website meta -->
+  <meta name="p:domain_verify" content="3e74d8241f54fcb34fb560cdfcad3460"/>
+
   <%= favicon_link_tag 'favicon.ico' %>
   <title>CODElit</title>
 
@@ -11,8 +15,6 @@
   <%= stylesheet_link_tag    'landing', media: 'all', 'data-turbolinks-track' => true %>
 
   <%= csrf_meta_tags %>
-
-
 
 </head>
 <body id="page-top" class="landing-page">
@@ -25,5 +27,46 @@
 <!-- Main javascript files -->
 <%= javascript_include_tag 'landing', 'data-turbolinks-track' => true %>
 <%= render 'shared/toasts' %>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-69052750-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+<script src="//load.sumome.com/" data-sumo-site-id="8a4fd6adf3075485618b8f8c7496343436f7f21963419dcd2a93d1a60260b61a" async="async"></script>
+
+<!--Start of Zopim Live Chat Script-->
+<script type="text/javascript">
+window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
+d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
+_.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute("charset","utf-8");
+$.src="//v2.zopim.com/?3PKiOs3oQ3d7nC4kB4S7v6enKWvnCL1Q";z.t=+new Date;$.
+type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");
+</script>
+<!--End of Zopim Live Chat Script-->
+
+<!-- Facebook Pixel Code -->
+<script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+      document,'script','//connect.facebook.net/en_US/fbevents.js');
+
+  fbq('init', '528550333982988');
+  fbq('track', "PageView");</script>
+<noscript><img height="1" width="1" style="display:none"
+               src="https://www.facebook.com/tr?id=528550333982988&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Facebook Pixel Code -->
+
 </body>
 </html>
