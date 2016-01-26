@@ -18,12 +18,12 @@ test:
   pool: 5
   timeout: 5000
 
-  production:
-    adapter: postgresql
-    pool: 5
-    timeout: 5000
-    database: postgres
-    username: sulman
-    password: M.7TJsE3kkXb
-    encoding: utf8
-    min_messages: warning
+production:
+  adapter: postgresql
+  pool: 5
+  timeout: 5000
+  database: postgres
+  username: sulman
+  password: M.7TJsE3kkXb
+  encoding: utf8
+  min_messages: warning
