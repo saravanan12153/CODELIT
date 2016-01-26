@@ -92,4 +92,19 @@ group :development do
 
   # for email in development
   gem 'letter_opener', '~> 1.4', '>= 1.4.1'
+
+  # for capistrano deployments
+  gem 'capistrano', '~> 3.4'
+  gem 'capistrano-rvm', '~> 0.1.2'
+  gem 'capistrano-rails', '~> 1.1', '>= 1.1.6'
+  gem 'capistrano-bundler', '~> 1.1', '>= 1.1.4'
+  gem 'capistrano3-puma', '~> 1.2', '>= 1.2.1'
+  gem 'capistrano-rails-console', '~> 1.0', '>= 1.0.2'
+  gem 'capistrano-passenger', '~> 0.2.0'
+  gem 'airbrussh', '~> 0.8.0'
 end
+
+group :production do
+  gem 'pg', '~> 0.18.4'
+end
+
