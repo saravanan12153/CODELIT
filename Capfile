@@ -6,7 +6,6 @@ require 'capistrano/rails'
 require 'capistrano/bundler'
 require 'capistrano/rvm'
 require 'capistrano/puma'
-require 'capistrano/passenger'
 require 'capistrano/rails/console'
 require 'airbrussh/capistrano'
 

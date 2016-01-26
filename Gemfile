@@ -100,7 +100,6 @@ group :development do
   gem 'capistrano-bundler', '~> 1.1', '>= 1.1.4'
   gem 'capistrano3-puma', '~> 1.2', '>= 1.2.1'
   gem 'capistrano-rails-console', '~> 1.0', '>= 1.0.2'
-  gem 'capistrano-passenger', '~> 0.2.0'
   gem 'airbrussh', '~> 0.8.0'
 end
 
