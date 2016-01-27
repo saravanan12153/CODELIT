@@ -88,4 +88,5 @@ Myapp::Application.configure do
       password: ENV['MANDRILL_PASSWORD'],
       authentication: 'login'
   }
+  config.action_controller.asset_host = "d31yl1krgy8rwm.cloudfront.net"
 end
