@@ -76,6 +76,9 @@ gem 'acts-as-taggable-on', '~> 3.4'
 # for meta data
 gem 'meta-tags', '~> 2.1'
 
+# for site_map generation
+gem 'sitemap_generator', '~> 5.1'
+
 group :doc do
   gem 'sdoc', require: false
 end
