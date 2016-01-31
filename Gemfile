@@ -79,6 +79,9 @@ gem 'meta-tags', '~> 2.1'
 # for site_map generation
 gem 'sitemap_generator', '~> 5.1'
 
+# for cdn delivery system
+gem 'asset_sync', '~> 1.1'
+
 group :doc do
   gem 'sdoc', require: false
 end

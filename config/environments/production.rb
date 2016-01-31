@@ -79,14 +79,19 @@ Myapp::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   config.action_mailer.default_url_options = {host: 'codelit.com'}
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-      address: 'smtp.mandrillapp.com',
-      port: 587,
-      enable_starttls_auto: true,
-      user_name: ENV['MANDRILL_USERNAME'],
-      password: ENV['MANDRILL_PASSWORD'],
-      authentication: 'login'
-  }
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+        address: 'smtp.mandrillapp.com',
+        port: 587,
+        enable_starttls_auto: true,
+        user_name: ENV['MANDRILL_USERNAME'],
+        password: ENV['MANDRILL_PASSWORD'],
+        authentication: 'login'
+    }
+    config.action_controller.asset_host = "//s3.eu-central-1.amazonaws.com/#{ENV['FOG_DIRECTORY']}"
+    config.assets.digest = true
+    config.assets.enabled = true
+    config.assets.prefix = "/assets"
+    config.assets.initialize_on_precompile = true
   #config.action_controller.asset_host = ENV['CLOUDFRONT_URL']
 end

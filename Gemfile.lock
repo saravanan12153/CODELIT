@@ -43,6 +43,10 @@ GEM
     airbrussh (0.8.0)
       sshkit (>= 1.6.1, != 1.7.0)
     arel (6.0.3)
+    asset_sync (1.1.0)
+      activemodel
+      fog (>= 1.8.0)
+      unf
     auto_html (1.6.4)
       redcarpet (~> 3.1)
       rinku (~> 1.5.0)
@@ -430,6 +434,9 @@ GEM
     uglifier (2.7.2)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.7.1)
     warden (1.2.4)
       rack (>= 1.0)
     web-console (2.2.1)
@@ -445,6 +452,7 @@ PLATFORMS
 DEPENDENCIES
   acts-as-taggable-on (~> 3.4)
   airbrussh (~> 0.8.0)
+  asset_sync (~> 1.1)
   auto_html (~> 1.6)
   better_errors (~> 2.1, >= 2.1.1)
   binding_of_caller (~> 0.7.2)
