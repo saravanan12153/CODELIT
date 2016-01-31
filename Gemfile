@@ -82,6 +82,9 @@ gem 'sitemap_generator', '~> 5.1'
 # for cdn delivery system
 gem 'asset_sync', '~> 1.1'
 
+# for background jobs
+gem 'sucker_punch', '~> 2.0'
+
 group :doc do
   gem 'sdoc', require: false
 end

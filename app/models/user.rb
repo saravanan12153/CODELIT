@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
 
   # Sending the welcome email when user logs in.
   def new_user_email
-    MyMailer.send_new_user_email(self).deliver_now
+    MyMailer.send_new_user_email(self).deliver_later
   end
 
   # MailChimp Subscribe

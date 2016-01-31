@@ -78,6 +78,10 @@ Myapp::Application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 
+  # background mailer
+  config.active_job.queue_adapter = :sucker_punch
+
+  # mailer settings
   config.action_mailer.default_url_options = {host: 'codelit.com'}
     config.action_mailer.delivery_method = :smtp
     config.action_mailer.smtp_settings = {
@@ -88,6 +92,8 @@ Myapp::Application.configure do
         password: ENV['MANDRILL_PASSWORD'],
         authentication: 'login'
     }
+
+    # assets settings
     config.action_controller.asset_host = ENV['ASSETS_URL']
     config.assets.digest = true
     config.assets.enabled = true
