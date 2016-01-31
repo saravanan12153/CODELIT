@@ -88,7 +88,7 @@ Myapp::Application.configure do
         password: ENV['MANDRILL_PASSWORD'],
         authentication: 'login'
     }
-    config.action_controller.asset_host = "//s3.#{ENV['FOG_REGION']}.amazonaws.com/#{ENV['FOG_DIRECTORY']}"
+    config.action_controller.asset_host = ENV['ASSETS_URL']
     config.assets.digest = true
     config.assets.enabled = true
     config.assets.prefix = "/assets"
