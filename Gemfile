@@ -83,7 +83,7 @@ gem 'sitemap_generator', '~> 5.1'
 gem 'asset_sync', '~> 1.1'
 
 # for background jobs
-gem 'sucker_punch', '~> 2.0'
+gem 'sucker_punch', '~> 1.0', '>= 1.0.5'
 
 group :doc do
   gem 'sdoc', require: false
