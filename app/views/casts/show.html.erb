@@ -93,20 +93,18 @@
 
 <br>
 <br>
-<% content_for :javascript do %>
-  <script type="text/javascript">
-      $(document).ready(function () {
-        // Adding responsive class to lecture video
-        $("iframe").addClass("embed-responsive-item");
-      });
+<script type="text/javascript">
+    $(document).ready(function () {
+      // Adding responsive class to lecture video
+      $("iframe").addClass("embed-responsive-item");
+    });
 
 
-      // making lecture video full screen
-      $(document).on('webkitfullscreenchange mozfullscreenchange fullscreenchange', function (e) {
-        $('body').hasClass('fullscreen-video') ? $('body').removeClass('fullscreen-video') : $('body').addClass('fullscreen-video')
-      });
+    // making lecture video full screen
+    $(document).on('webkitfullscreenchange mozfullscreenchange fullscreenchange msfullscreenchange', function (e) {
+      $('body').hasClass('fullscreen-video') ? $('body').removeClass('fullscreen-video') : $('body').addClass('fullscreen-video')
+    });
 
 
-    </script>
-<% end %>
+</script>
 

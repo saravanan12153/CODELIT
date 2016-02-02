@@ -101,27 +101,24 @@
 </div>
 <br>
 <br>
-<% content_for :javascript do %>
-  <script type="text/javascript">
-    $(document).ready(function () {
-      // Adding responsive class to lecture video
-      $("iframe").addClass("embed-responsive-item");
-      <% if @lecture.video.empty? && !@lecture.transcript.empty? %>
-      jQuery('#tab-2').addClass('active');
-      jQuery('#tab-3').removeClass('active');
-      jQuery('#tab-1').removeClass('active');
-      jQuery('#t2').parent('li').addClass('active');
-      jQuery('#t3').parent('li').removeClass('active');
-      jQuery('#t1').parent('li').removeClass('active');
-      <% end %>
-    });
-
-
+<script type="text/javascript">
+  $(document).ready(function () {
+    // Adding responsive class to lecture video
+    $("iframe").addClass("embed-responsive-item");
+    <% if @lecture.video.empty? && !@lecture.transcript.empty? %>
+    jQuery('#tab-2').addClass('active');
+    jQuery('#tab-3').removeClass('active');
+    jQuery('#tab-1').removeClass('active');
+    jQuery('#t2').parent('li').addClass('active');
+    jQuery('#t3').parent('li').removeClass('active');
+    jQuery('#t1').parent('li').removeClass('active');
+    <% end %>
     // making lecture video full screen
-    $(document).on('webkitfullscreenchange mozfullscreenchange fullscreenchange', function (e) {
-      $('body').hasClass('fullscreen-video') ? $('body').removeClass('fullscreen-video') : $('body').addClass('fullscreen-video')
-    });
+    // making lecture video full screen
+  });
+  $(document).on('webkitfullscreenchange mozfullscreenchange fullscreenchange msfullscreenchange', function (e) {
+    $('body').hasClass('fullscreen-video') ? $('body').removeClass('fullscreen-video') : $('body').addClass('fullscreen-video')
+  });
 
 
-  </script>
-<% end %>
+</script>

@@ -78,7 +78,7 @@
                 <div class="panel-body">
                   <h5 class="text-center">Lectures</h5>
                   <ul class="folder-list m-b-md" style="padding: 0">
-                    <% @course.lectures.where(publish: true).each do |lecture| %>
+                    <% @course.lectures.where(publish: true).order("seq ASC").each do |lecture| %>
                       <li>
                         <i class="fa fa-lock "></i> <%= lecture.seq %>. <%= lecture.title %>
                       </li>
@@ -108,64 +108,62 @@
 <br>
 
 
-<% content_for :javascript do %>
-  <script src="https://js.braintreegateway.com/v2/braintree.js"></script>
-  <script type="text/javascript">
+<script src="https://js.braintreegateway.com/v2/braintree.js"></script>
+<script type="text/javascript">
 
-    var clientToken = "<%= Braintree::ClientToken.generate %>";
-    braintree.setup(clientToken, "dropin", {
-      container: "dropin",
-      paypal: {
-        singleUse: true,
-        currency: 'EUR',
-        locale: 'en_us'
-      },
-      dataCollector: {
-        paypal: true  // Enables fraud prevention
-      }
-    });
-    $(document).ready(function () {
+  var clientToken = "<%= Braintree::ClientToken.generate %>";
+  braintree.setup(clientToken, "dropin", {
+    container: "dropin",
+    paypal: {
+      singleUse: true,
+      currency: 'EUR',
+      locale: 'en_us'
+    },
+    dataCollector: {
+      paypal: true  // Enables fraud prevention
+    }
+  });
+  $(document).ready(function () {
 
 
-      // Adding responsive class to lecture video
-      $("iframe").addClass("embed-responsive-item");
-      <% if @course.promo.empty? %>
-      jQuery('#tab-2').addClass('active');
-      jQuery('#tab-4').removeClass('active');
+    // Adding responsive class to lecture video
+    $("iframe").addClass("embed-responsive-item");
+    <% if @course.promo.empty? %>
+    jQuery('#tab-2').addClass('active');
+    jQuery('#tab-4').removeClass('active');
+    jQuery('#tab-3').removeClass('active');
+    jQuery('#tab-1').removeClass('active');
+    jQuery('#t2').parent('li').addClass('active');
+    jQuery('#t3').parent('li').removeClass('active');
+    jQuery('#t4').parent('li').removeClass('active');
+    jQuery('#t1').parent('li').removeClass('active');
+    <% end %>
+    <% if params[:coupon].present? %>
+      jQuery('#tab-4').addClass('active');
       jQuery('#tab-3').removeClass('active');
+      jQuery('#tab-2').removeClass('active');
       jQuery('#tab-1').removeClass('active');
-      jQuery('#t2').parent('li').addClass('active');
+      jQuery('#t4').parent('li').addClass('active');
+      jQuery('#t2').parent('li').removeClass('active');
       jQuery('#t3').parent('li').removeClass('active');
-      jQuery('#t4').parent('li').removeClass('active');
       jQuery('#t1').parent('li').removeClass('active');
-      <% end %>
-      <% if params[:coupon].present? %>
-        jQuery('#tab-4').addClass('active');
-        jQuery('#tab-3').removeClass('active');
-        jQuery('#tab-2').removeClass('active');
-        jQuery('#tab-1').removeClass('active');
-        jQuery('#t4').parent('li').addClass('active');
-        jQuery('#t2').parent('li').removeClass('active');
-        jQuery('#t3').parent('li').removeClass('active');
-        jQuery('#t1').parent('li').removeClass('active');
-        <% if user_signed_in? %>
-          <% if @coupon.present? && @coupon.total > 0 %>
-            toastr['success']('Coupon added successfully');
-          <% else %>
-            toastr['error']('Invalid or Expired Coupon!');
-          <% end %>
+      <% if user_signed_in? %>
+        <% if @coupon.present? && @coupon.total > 0 %>
+          toastr['success']('Coupon added successfully');
         <% else %>
-          toastr['error']('Please Log In to continue!');
+          toastr['error']('Invalid or Expired Coupon!');
         <% end %>
+      <% else %>
+        toastr['error']('Please Log In to continue!');
       <% end %>
+    <% end %>
 
-    });
+  });
 
-    // making lecture video full screen
-    $(document).on('webkitfullscreenchange mozfullscreenchange fullscreenchange', function (e) {
-      $('body').hasClass('fullscreen-video') ? $('body').removeClass('fullscreen-video') : $('body').addClass('fullscreen-video')
-    });
+  // making lecture video full screen
+  $(document).on('webkitfullscreenchange mozfullscreenchange fullscreenchange msfullscreenchange', function (e) {
+    $('body').hasClass('fullscreen-video') ? $('body').removeClass('fullscreen-video') : $('body').addClass('fullscreen-video')
+  });
 
 
-  </script>
-<% end %>
+</script>
