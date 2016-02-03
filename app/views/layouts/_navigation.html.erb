@@ -12,6 +12,30 @@
                 </div>
             </li>
           <% end %>
+            <% if user_signed_in? %>
+              <li class="<%= 'active' if controller.controller_name == 'users' || current_page?(edit_user_registration_path) %>">
+                <a href=""><%= image_tag current_user.avatar.url(:medium), alt: current_user.name, class: "img-circle", style: "width: 15px; height: 15px" %>
+                  <span class="nav-label"><%= current_user.name %> </span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                  <li>
+                    <%= link_to user_path(current_user) do %>
+                      <i class="fa fa-user"></i> Profile
+                    <% end %>
+                  </li>
+                  <li>
+                    <%= link_to edit_user_registration_path do %>
+                      <i class="fa fa-pencil-square-o"></i> Edit Profile
+                    <% end %>
+                  </li>
+                  <li class="divider"></li>
+                  <li>
+                    <%= link_to destroy_user_session_path, method: :delete do %>
+                      <i class="fa fa-sign-out"></i> Log out
+                    <% end %>
+                  </li>
+                </ul>
+              </li>
+            <% end %>
             <li class="<%= 'active' if controller.controller_name == "courses" %>">
                 <%= link_to courses_path do %>
                 <i class="fa fa-desktop"></i> <span class="nav-label">Courses</span>
