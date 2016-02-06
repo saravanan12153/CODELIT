@@ -2,9 +2,9 @@
     <nav class="navbar navbar-fixed-top white-bg" role="navigation" style="margin-bottom: 0">
         <div class="navbar-header">
             <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
-            <%= search_form_for @q, url: search_path, html: { method: :post, class: "navbar-form-custom" } do |f| %>
+            <%= search_form_for @re, url: search_path, html: { method: :post, class: "navbar-form-custom" } do |f| %>
               <div class="form-group">
-                <%= f.search_field :title_or_description_cont, placeholder: 'Search for something...', class: 'form-control', style: "color: #ffffff;", id: "top-search"%>
+                <%= f.search_field :title_cont, placeholder: 'Search for something...', class: 'form-control', style: "color: #ffffff;", id: "top-search"%>
               </div>
             <% end %>
 <!--             <form role="search" class="navbar-form-custom" method="post" action="/">

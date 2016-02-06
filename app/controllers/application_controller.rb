@@ -18,7 +18,9 @@ class ApplicationController < ActionController::Base
   end
 
   def set_search
-    @q=Course.search(params[:q])
+    @co=Course.search(params[:q])
+    @re=Recipe.search(params[:q])
+    @ca=Cast.search(params[:q])
   end
 
 
