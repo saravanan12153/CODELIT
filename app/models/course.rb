@@ -28,7 +28,7 @@ class Course < ActiveRecord::Base
   def completed?(user)
     if self.progress?(user) == 100 && !self.enrols.where(user_id: [user.id]).first.complete
       self.enrols.where(user_id: [user.id]).first.update!(complete: true)
-      MyMailer.course_complete_email(self, user).deliver_later
+      CourseCompleteEmailJob.new.async.perform(self, user).deliver_later r
     end
   end
 

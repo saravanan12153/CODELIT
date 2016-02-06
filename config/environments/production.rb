@@ -79,7 +79,7 @@ Myapp::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   # background mailer
-  config.active_job.queue_adapter = :sucker_punch
+  # config.active_job.queue_adapter = :sucker_punch
 
   # mailer settings
   config.action_mailer.default_url_options = {host: 'codelit.com'}

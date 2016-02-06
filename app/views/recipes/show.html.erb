@@ -100,7 +100,13 @@
           </div>
           <div id="tab-2" class="tab-pane">
             <div class="panel-body">
-              <%= render partial: "comments/comments", locals: {commentable: @recipe, commentable_parent: nil} %>
+              <% if user_signed_in? %>
+                <%= render partial: "comments/comments", locals: {commentable: @recipe, commentable_parent: nil} %>
+              <% else %>
+                <div class="text-center">
+                  <%= link_to "Log In/Sign Up To Continue", new_user_session_path, class: "btn btn-primary" %>
+                </div>
+              <% end %>
             </div>
           </div>
         </div>

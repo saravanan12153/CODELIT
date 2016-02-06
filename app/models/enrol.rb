@@ -19,7 +19,7 @@ class Enrol < ActiveRecord::Base
   end
 
   def send_mail_receipt
-    MyMailer.new_course_buy_email(self).deliver_later
+    NewCourseBuyEmailJob.new.async.perform(self)
   end
 
   private

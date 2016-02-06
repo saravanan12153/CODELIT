@@ -62,7 +62,9 @@
       <div class="tabs-container">
         <ul class="nav nav-tabs">
           <li class="active"><a id="t1" data-toggle="tab" href="#tab-1"> Video</a></li>
+          <% unless @cast.transcript.empty? %>
           <li class=""><a id="t2" data-toggle="tab" href="#tab-2"> Transcript</a></li>
+          <% end %>
           <li class=""><a id="t3" data-toggle="tab" href="#tab-3"> Discussion (<%= @cast.comments.count %>)</a></li>
         </ul>
         <div class="tab-content">
@@ -83,15 +85,23 @@
               </script>
             </div>
           </div>
+          <% unless @cast.transcript.empty? %>
           <div id="tab-2" class="tab-pane">
             <div class="panel-body">
               <div class="text-muted text-center"><i class="fa fa-clock-o"></i> <%= @cast.created_at.strftime("%d %b, %Y") %></div>
               <p><%= raw @cast.transcript %></p>
             </div>
           </div>
+          <% end %>
           <div id="tab-3" class="tab-pane">
             <div class="panel-body">
-              <%= render partial: "comments/comments", locals: {commentable: @cast, commentable_parent: nil} %>
+              <% if user_signed_in? %>
+                <%= render partial: "comments/comments", locals: {commentable: @cast, commentable_parent: nil} %>
+              <% else %>
+                <div class="text-center">
+                  <%= link_to "Log In/Sign Up To Continue", new_user_session_path, class: "btn btn-primary" %>
+                </div>
+              <% end %>
             </div>
           </div>
         </div>
