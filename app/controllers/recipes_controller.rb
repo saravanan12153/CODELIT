@@ -3,9 +3,9 @@ class RecipesController < ApplicationController
 
   def index
     if params[:tag].present?
-      @recipes = Recipe.where(publish: true).tagged_with(params[:tag]).order('created_at ASC')
+      @recipes = Recipe.where(publish: true).tagged_with(params[:tag]).order('created_at ASC').page(params[:page]).per(9)
     else
-      @recipes = Recipe.where(publish: true).all.order('created_at ASC')
+      @recipes = Recipe.where(publish: true).all.order('created_at ASC').page(params[:page]).per(9)
     end
   end
 

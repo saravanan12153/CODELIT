@@ -85,6 +85,9 @@ gem 'asset_sync', '~> 1.1'
 # for background jobs
 gem 'sucker_punch', '~> 1.0', '>= 1.0.5'
 
+# for pagination
+gem 'kaminari', '~> 0.16.3'
+
 group :doc do
   gem 'sdoc', require: false
 end

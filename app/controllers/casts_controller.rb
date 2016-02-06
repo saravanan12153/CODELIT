@@ -2,7 +2,7 @@ class CastsController < ApplicationController
   before_action :set_cast, only: [:show]
 
     def index
-      @casts = Cast.where(publish: true).order('created_at ASC')
+      @casts = Cast.where(publish: true).order('created_at ASC').page(params[:page]).per(6)
     end
 
     def show

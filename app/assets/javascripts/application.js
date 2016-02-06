@@ -23,6 +23,10 @@
 //= require slimscroll/jquery.slimscroll.min.js
 //= require notifications.js.coffee
 //= require inspinia.js
+//= require search.js
+//= require recipes.js
+//= require casts.js
+//= require jquery.infinitescroll
 
 toastr.options = {
   "closeButton": true,
